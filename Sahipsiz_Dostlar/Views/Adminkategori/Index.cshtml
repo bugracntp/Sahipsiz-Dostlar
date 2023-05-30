@@ -1,0 +1,43 @@
+﻿@model IEnumerable<Sahipsiz_Dostlar.Entity.Models.Kategori>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Kategori Kayırları</h2>
+<hr />
+<p>
+    <a class="btn btn-default" href="/Adminkategori/Create">Yeni Kayıt</a>
+</p>
+<table class="table table-bordered table-striped table-responsive text-center">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.KategoriID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.KategoriAdi)
+        </th>
+        <th> İşlemler</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.KategoriID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.KategoriAdi)
+            </td>
+            <td>
+                <div class="btn-group">
+                    <a class="btn btn-success" href="/AdminCins/Edit/@item.KategoriID"><i class="icon_pencil-edit"></i></a>
+                    <a class="btn btn-primary" href="/AdminCins/Details/@item.KategoriID"><i class="icon_plus_alt2"></i></a>
+                    <a class="btn btn-danger" href="/AdminCins/Delete/@item.KategoriID"><i class="icon_close_alt2"></i></a>
+                </div>
+            </td>
+        </tr>
+    }
+
+</table>

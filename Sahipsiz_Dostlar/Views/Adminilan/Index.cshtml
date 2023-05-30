@@ -1,0 +1,85 @@
+﻿@model IEnumerable<Sahipsiz_Dostlar.Entity.Models.Ilanlar>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>İlan Kayıtları</h2>
+
+<p>
+    <a class="btn btn-default" href="/Adminilan/Create">Yeni Kayıt</a>
+</p>
+<table class="table table-bordered table-striped table-responsive text-center">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.HayvanId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Isim)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tur)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Yas)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cinsiyet)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Renk)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Açıklama)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SahiplendirmeDurumu)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ImgURL)
+        </th>
+        <th>İşlemler</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.HayvanId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Isim)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tur)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Yas)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cinsiyet)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Renk)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Açıklama)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SahiplendirmeDurumu)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ImgURL)
+            </td>
+            <td>
+                <div class="btn-group">
+                    <a class="btn btn-success" href="/Adminilan/Edit/@item.HayvanId"><i class="icon_pencil-edit"></i></a>
+                    <a class="btn btn-primary" href="/Adminilan/Details/@item.HayvanId"><i class="icon_plus_alt2"></i></a>
+                    <a class="btn btn-danger" href="/Adminilan/Delete/@item.HayvanId"><i class="icon_close_alt2"></i></a>
+                </div>
+            </td>
+        </tr>
+    }
+
+</table>

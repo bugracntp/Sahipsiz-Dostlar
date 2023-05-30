@@ -1,0 +1,38 @@
+﻿@model Sahipsiz_Dostlar.Entity.Models.Kategori
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Güncelleme Ekranı</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Cins</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.KategoriID)
+
+        <div class="form-group">
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.KategoriAdi, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.KategoriAdi, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Onayla" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+}
+
+<div class="col-md-10">
+    <a class="btn btn-default" href="/Adminkategori">Geri Dön</a>
+</div>

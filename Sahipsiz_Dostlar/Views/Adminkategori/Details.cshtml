@@ -1,0 +1,32 @@
+﻿@model Sahipsiz_Dostlar.Entity.Models.Kategori
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<h2>Ayrıntılar</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.KategoriID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KategoriID)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.KategoriAdi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KategoriAdi)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    <a class="btn btn-default" href="/AdminCins">Geri Dön</a> |
+    <a class="btn btn-default" href="/AdminCins/Edit/@Model.KategoriID">Güncelle</a>
+</p>
