@@ -16,7 +16,7 @@ namespace Sahipsiz_Dostlar
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Anasayfa", action = "Index", id = UrlParameter.Optional }
             );
         }
     }

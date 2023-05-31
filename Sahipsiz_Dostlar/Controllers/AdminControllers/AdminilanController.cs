@@ -52,12 +52,12 @@ namespace Sahipsiz_Dostlar.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "HayvanId,Isim,Tur,Yas,Cinsiyet,Renk,Açıklama,ImgURL")] Ilanlar ilanlar)
+        public ActionResult Create([Bind(Include = "HayvanId,Isim,Tur,Yas,Cinsiyet,Renk,Açıklama,ImgURL")] Ilanlar ilanlar, HttpPostedFileBase ImgURL)
         {
             if (ModelState.IsValid)
             {
                 ilanlar.KullaniciId = Convert.ToInt32(Session["KullaniciID"]);
-                IR.Add(ilanlar);
+                IR.Add(ilanlar,ImgURL);
                 return RedirectToAction("Index");
             }
 
@@ -84,11 +84,11 @@ namespace Sahipsiz_Dostlar.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "HayvanId,Isim,Tur,Yas,Cinsiyet,Renk,Açıklama,SahiplendirmeDurumu,ImgURL")] Ilanlar ilanlar)
+        public ActionResult Edit([Bind(Include = "HayvanId,Isim,Tur,Yas,Cinsiyet,Renk,Açıklama,SahiplendirmeDurumu,ImgURL")] Ilanlar ilanlar,HttpPostedFileBase ImgURL)
         {
             if (ModelState.IsValid)
             {
-                IR.Update(ilanlar);   
+                IR.Update(ilanlar, ImgURL);   
                 return RedirectToAction("Index");
             }
             return View(ilanlar);

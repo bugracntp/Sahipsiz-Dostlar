@@ -1,0 +1,554 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<article>
+    <section class="anasayfa" id="home">
+        <div class="container">
+            <p class="section-subtitle">
+                <h2> SayipsizDostlara Hoşgeldiniz</h2>
+            </p>
+            <h2 class="h1 anasayfa-title">
+                <strong>Hayvan dostlarımız</strong> sahiplendirmeyi bekliyor
+            </h2>
+            @if (ViewBag.Giris != null)
+            {
+                <p>@ViewBag.Giris</p>
+            }
+            <p class="anasayfa-text">
+                Evlerimizde beslediğimiz küçük dostlarımzı satmak yerine sahiplendirmek istiyoruz. Bu yüzden böyle bir platform oluşturduk.
+                Bizlere destek olmak ve hayvan dostlarımıza sahip çıkmak için lütfen satın almak yerine sahiplendirme yapınız. Bunun için bize katılabilirsiniz.
+            </p>
+            <br />
+            <button class="btn btn-primary">
+                <span>Kayıt Ol</span>
+            </button>
+
+        </div>
+    </section>
+
+
+    <!-- features -->
+    <section class="section features">
+        <div class="container">
+            <ul class="features-list">
+                <li class="features-item">
+                    <div class="item-icon">
+                        <ion-icon name="shield-checkmark-outline"></ion-icon>
+                    </div>
+                    <div>
+                        <h3 class="h4 item-title">Güvenli Bir Yuva</h3>
+                        <p class="item-text">
+                            Küçük dostlarımıza güvenli yuvalar verelim.
+                        </p>
+                    </div>
+                </li>
+                <li class="features-item">
+                    <div class="item-icon">
+                        <ion-icon name="medkit-outline"></ion-icon>
+                    </div>
+                    <div>
+                        <h3 class="h4 item-title">Sağlıklı Bir yuva</h3>
+                        <p class="item-text">
+                            Küçük dostlarımızın sağlıkları için elimizden
+                        </p>
+                    </div>
+                </li>
+                <li class="features-item">
+                    <div class="item-icon">
+                        <ion-icon name="home-outline"></ion-icon>
+                    </div>
+                    <div>
+                        <h3 class="h4 item-title">Bir Ev </h3>
+                        <p class="item-text">
+                            Yaşayabilecekleri sıcak bir yuva verelim.
+                        </p>
+                    </div>
+                </li>
+                <li class="features-item">
+                    <div class="item-icon">
+                        <ion-icon name="fish-outline"></ion-icon>
+                    </div>
+                    <div>
+                        <h3 class="h4 item-title">Bir kap yemek</h3>
+                        <p class="item-text">
+                            Yaşayabilecekleri sıcak bir yuva verelim.
+                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- about -->
+
+    <section class="section about" id="about">
+        <div class="container">
+            <div class="about-banner">
+                <h2 class="deco-title">Hakkımızda</h2>
+                <img src="/Content/images/deco-img.png" width="58" height="261" alt="" class="deco-img">
+
+                <div class="banner-row">
+                    <div class="banner-col">
+                        <img src="/Content/images/about-banner-1.jpg" width="315" height="380" loading="lazy"
+                             alt="Tiger" class="about-img w-100">
+
+                        <img src="/Content/images/about-banner-2.jpg" width="386" height="250" loading="lazy"
+                             alt="Panda" class="about-img about-img-2 w-100">
+                    </div>
+                    <div class="banner-col">
+                        <img src="/Content/images/about-banner-3.jpg" width="250" height="277" loading="lazy"
+                             alt="Elephant" class="about-img about-img-3 w-100">
+
+                        <img src="/Content/images/about-banner-4.jpg" width="315" height="380" loading="lazy"
+                             alt="Deer" class="about-img w-100">
+                    </div>
+                </div>
+
+            </div>
+            <div class="about-content">
+                <p class="section-subtitle">
+                    <img src="/Content/images/subtitle-img-green.png" width="32" height="7" alt="Wavy line">
+
+                    <span>Neden bizi tercih etmelisiniz</span>
+                </p>
+
+                <h2 class="h2 section-title">
+                    Hayvanlar birer eşya değildir <strong>satılıp alınmamalılar.</strong>
+                </h2>
+                <br />
+                <div class="tab-content" data-text-mission>
+                    <p class="section-text">
+                        But I must explain to you how all this mistaken denouncing pleasure and praising pain
+                        was born and I will give you a complete account of the system expoundmaster
+                        mission
+                    </p>
+                    <ul class="tab-list">
+                        <li class="tab-item">
+                            <div class="item-icon">
+                                <ion-icon name="checkmark-circle"></ion-icon>
+                            </div>
+                            <p class="tab-text">Charity For Foods</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="h2 section-title">324+ Trusted Global Partners</h2>
+                <button class="btn btn-outline">
+                    <span>Become a Partner</span>
+                    <ion-icon name="heart-outline" aria-hidden="true"></ion-icon>
+                </button>
+            </div>
+            <figure class="cta-banner">
+                <img src="/Content/images/cta-banner.jpg" width="520" height="228" loading="lazy" alt="Fox"
+                     class="img-cover">
+            </figure>
+        </div>
+    </section>
+
+    <!-- services -->
+    <section class="section service" id="service"
+             style="background-image: url('./Content/images/service-map.png')">
+        <div class="container">
+
+            <p class="section-subtitle">
+                <img src="/Content/images/subtitle-img-green.png" width="32" height="7" alt="Wavy line">
+
+                <span>What We Do</span>
+            </p>
+
+            <h2 class="h2 section-title">
+                We Work Differently to <strong>keep The World Safe</strong>
+            </h2>
+
+            <ul class="service-list">
+
+                <li>
+                    <div class="service-card">
+
+                        <div class="card-icon">
+                            <ion-icon name="leaf-outline"></ion-icon>
+                        </div>
+
+                        <h3 class="h3 card-title">Save Nature</h3>
+
+                        <p class="card-text">
+                            Tempor incididunt ut labores
+                            dolore magna suspene
+                        </p>
+
+                        <a href="#" class="btn-link">
+                            <span>Read More</span>
+
+                            <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
+                        </a>
+
+                    </div>
+                </li>
+
+                <li>
+                    <div class="service-card">
+
+                        <div class="card-icon">
+                            <ion-icon name="earth-outline"></ion-icon>
+                        </div>
+
+                        <h3 class="h3 card-title">Save Ecology</h3>
+
+                        <p class="card-text">
+                            Tempor incididunt ut labores
+                            dolore magna suspene
+                        </p>
+
+                        <a href="#" class="btn-link">
+                            <span>Read More</span>
+
+                            <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
+                        </a>
+
+                    </div>
+                </li>
+
+                <li>
+                    <div class="service-card">
+
+                        <div class="card-icon">
+                            <ion-icon name="flower-outline"></ion-icon>
+                        </div>
+
+                        <h3 class="h3 card-title">Tree Plantation</h3>
+
+                        <p class="card-text">
+                            Tempor incididunt ut labores
+                            dolore magna suspene
+                        </p>
+
+                        <a href="#" class="btn-link">
+                            <span>Read More</span>
+
+                            <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
+                        </a>
+
+                    </div>
+                </li>
+
+                <li>
+                    <div class="service-card">
+
+                        <div class="card-icon">
+                            <ion-icon name="boat-outline"></ion-icon>
+                        </div>
+
+                        <h3 class="h3 card-title">Clear Ocean</h3>
+
+                        <p class="card-text">
+                            Tempor incididunt ut labores dolore magna suspene
+                        </p>
+                        <a href="#" class="btn-link">
+                            <span>Read More</span>
+                            <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
+                        </a>
+
+                    </div>
+                </li>
+
+            </ul>
+
+        </div>
+    </section>
+
+
+    <!-- TESTIMONIALS -->
+
+    <section class="testi">
+
+        <div class="testi-content">
+
+            <p class="section-subtitle">
+                <img src="/Content/images/subtitle-img-green.png" width="32" height="7" alt="Wavy line">
+
+                <span>Our Testimonials</span>
+            </p>
+
+            <h2 class="h2 section-title">
+                What People Say About <strong>Our Organization</strong>
+            </h2>
+
+            <div class="testi-card">
+
+                <figure class="card-avatar">
+                    <img src="/Content/images/testi-avatar.png" width="60" height="60" loading="lazy"
+                         alt="David S. Neuman">
+                </figure>
+
+                <div>
+                    <blockquote class="testi-text">
+                        Sed ut perspiciatis unde omnis iste natus error voluptatem accusantium doloremque
+                        laudantium totam rem
+                        aperiam eaquesa
+                        quae abillo inventore veritatis quasi architecto beatae vitae dicta sunt explicabo
+                        enimpsam voluptatem
+                    </blockquote>
+
+                    <h3 class="testi-name">David S. Neuman</h3>
+
+                    <p class="testi-title">Business Manager</p>
+                </div>
+
+            </div>
+
+        </div>
+
+        <figure class="testi-banner">
+            <img src="/Content/images/testi-banner.jpg" width="960" height="846" loading="lazy" alt="Rhinoceros"
+                 class="img-cover">
+        </figure>
+
+    </section>
+
+
+
+
+
+    <!-- PARTNER -->
+
+    <section class="section partner">
+        <div class="container">
+
+            <a href="#" class="partner-logo">
+                <img src="/Content/images/partner-1.png" width="157" height="55" loading="lazy"
+                     alt="Children Fund" class="gray">
+
+                <img src="/Content/images/partner-1-active.png" width="157" height="55" loading="lazy"
+                     alt="Children Fund" class="color">
+            </a>
+
+            <a href="#" class="partner-logo">
+                <img src="/Content/images/partner-2.png" width="163" height="55" loading="lazy"
+                     alt="Non Profit Agency" class="gray">
+
+                <img src="./Content/images/partner-2-active.png" width="163" height="55" loading="lazy"
+                     alt="Non Profit Agency" class="color">
+            </a>
+
+            <a href="#" class="partner-logo">
+                <img src="/Content/images/partner-3.png" width="149" height="55" loading="lazy"
+                     alt="Rise Hand Help Us" class="gray">
+
+                <img src="/Content/images/partner-3-active.png" width="149" height="55" loading="lazy"
+                     alt="Rise Hand Help Us" class="color">
+            </a>
+
+            <a href="#" class="partner-logo">
+                <img src="/Content/images/partner-4.png" width="169" height="58" loading="lazy" alt="Helping"
+                     class="gray">
+
+                <img src="/Content/images/partner-4-active.png" width="169" height="58" loading="lazy"
+                     alt="Helping" class="color">
+            </a>
+
+            <a href="#" class="partner-logo">
+                <img src="/Content/images/partner-5.png" width="211" height="55" loading="lazy"
+                     alt="Poor Fund Organization" class="gray">
+
+                <img src="/Content/images/partner-5-active.png" width="211" height="55" loading="lazy"
+                     alt="Poor Fund Organization" class="color">
+            </a>
+
+        </div>
+    </section>
+
+    <!-- EVENT -->
+
+    <section class="section event" id="event">
+        <div class="container">
+
+            <p class="section-subtitle">
+                <img src="/Content/images/subtitle-img-green.png" width="32" height="7" alt="Wavy line">
+
+                <span>Event & Program</span>
+
+                <img src="/Content/images/subtitle-img-green.png" width="32" height="7" alt="Wavy line">
+            </p>
+
+            <h2 class="h2 section-title">
+                Our Most Popular Causes For <strong>Building Fund</strong>
+            </h2>
+
+            <ul class="event-list">
+
+                <li>
+                    <div class="event-card">
+
+                        <time class="card-time" datetime="01-05">
+                            <span class="month">Jan</span>
+
+                            <span class="date">05</span>
+                        </time>
+
+                        <div class="wrapper">
+
+                            <div class="card-content">
+                                <p class="card-subtitle">Ocean Water</p>
+
+                                <h3 class="card-title">Far from the countries Vokalia and Consonantia 2022</h3>
+
+                                <p class="card-text">
+                                    Sit amet consectetur adipiscing elit sed do eiusmod tempor
+                                </p>
+                            </div>
+
+                            <button class="btn btn-white">
+                                <span>View Events</span>
+
+                                <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
+                            </button>
+
+                        </div>
+
+                    </div>
+                </li>
+
+                <li>
+                    <div class="event-card">
+
+                        <time class="card-time" datetime="02-23">
+                            <span class="month">Feb</span>
+
+                            <span class="date">23</span>
+                        </time>
+
+                        <div class="wrapper">
+
+                            <div class="card-content">
+                                <p class="card-subtitle">Ocean Water</p>
+
+                                <h3 class="card-title">Far from the countries Vokalia and Consonantia 2022</h3>
+
+                                <p class="card-text">
+                                    Sit amet consectetur adipiscing elit sed do eiusmod tempor
+                                </p>
+                            </div>
+
+                            <button class="btn btn-white">
+                                <span>View Events</span>
+
+                                <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
+                            </button>
+
+                        </div>
+
+                    </div>
+                </li>
+
+                <li>
+                    <div class="event-card">
+
+                        <time class="card-time" datetime="03-27">
+                            <span class="month">Mar</span>
+
+                            <span class="date">27</span>
+                        </time>
+
+                        <div class="wrapper">
+
+                            <div class="card-content">
+                                <p class="card-subtitle">Ocean Water</p>
+
+                                <h3 class="card-title">Far from the countries Vokalia and Consonantia 2022</h3>
+
+                                <p class="card-text">
+                                    Sit amet consectetur adipiscing elit sed do eiusmod tempor
+                                </p>
+                            </div>
+
+                            <button class="btn btn-white">
+                                <span>View Events</span>
+
+                                <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
+                            </button>
+
+                        </div>
+
+                    </div>
+                </li>
+
+            </ul>
+
+            <button class="btn btn-secondary">
+                <span>Learn More Us</span>
+
+                <ion-icon name="heart-outline" aria-hidden="true"></ion-icon>
+            </button>
+
+        </div>
+    </section>
+
+
+    <!-- INSTA POST -->
+    <section class="insta-post">
+
+        <ul class="insta-post-list">
+
+            <li class="insta-post-item">
+                <a href="#" class="insta-post-link">
+                    <img src="/Content/images/insta-1.jpg" width="320" height="300" loading="lazy" alt="Lion"
+                         class="img-cover">
+
+                    <ion-icon name="logo-instagram"></ion-icon>
+                </a>
+            </li>
+
+            <li class="insta-post-item">
+                <a href="#" class="insta-post-link">
+                    <img src="/Content/images/insta-2.jpg" width="320" height="300" loading="lazy" alt="Deer"
+                         class="img-cover">
+
+                    <ion-icon name="logo-instagram"></ion-icon>
+                </a>
+            </li>
+
+            <li class="insta-post-item">
+                <a href="#" class="insta-post-link">
+                    <img src="/Content/images/insta-3.jpg" width="320" height="300" loading="lazy"
+                         alt="Wild Bear" class="img-cover">
+
+                    <ion-icon name="logo-instagram"></ion-icon>
+                </a>
+            </li>
+
+            <li class="insta-post-item">
+                <a href="#" class="insta-post-link">
+                    <img src="/Content/images/insta-4.jpg" width="320" height="300" loading="lazy" alt="Deer"
+                         class="img-cover">
+
+                    <ion-icon name="logo-instagram"></ion-icon>
+                </a>
+            </li>
+
+            <li class="insta-post-item">
+                <a href="#" class="insta-post-link">
+                    <img src="/Content/images/insta-5.jpg" width="320" height="300" loading="lazy" alt="Horses"
+                         class="img-cover">
+
+                    <ion-icon name="logo-instagram"></ion-icon>
+                </a>
+            </li>
+
+        </ul>
+
+    </section>
+
+</article>
+
+

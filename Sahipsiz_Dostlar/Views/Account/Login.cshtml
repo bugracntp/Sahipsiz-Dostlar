@@ -37,21 +37,18 @@
                 <form method="POST" action="@Url.Action("Register", "Account")">
                     @Html.AntiForgeryToken()
                     <div class="form-group">
-                        @Html.LabelFor(model => model.Ad, htmlAttributes: new { @class = "control-label col-md-2" })
                         <div class="col-md-10">
                             @Html.EditorFor(model => model.Ad, new { htmlAttributes = new { @class = "field", @placeholder = "Adınız" } })
                             @Html.ValidationMessageFor(model => model.Ad, "", new { @class = "text-danger" })
                         </div>
                     </div>
                     <div class="form-group">
-                        @Html.LabelFor(model => model.Soyad, htmlAttributes: new { @class = "control-label col-md-2" })
                         <div class="col-md-10">
                             @Html.EditorFor(model => model.Soyad, new { htmlAttributes = new { @class = "field", @placeholder = "Soyadınız" } })
                             @Html.ValidationMessageFor(model => model.Soyad, "", new { @class = "text-danger" })
                         </div>
                     </div>
                     <div class="form-group">
-                        @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
                         <div class="col-md-10">
                             @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "field", @placeholder = "Email" } })
                             @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
@@ -59,14 +56,25 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        @Html.LabelFor(model => model.DogumTarihi, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Tel, new { htmlAttributes = new { @class = "field", @placeholder = "Telefon" } })
+                            @Html.ValidationMessageFor(model => model.Tel, "", new { @class = "text-danger" })
+                            @Html.ValidationMessage("TelefonExist", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
                         <div class="col-md-10">
                             @Html.EditorFor(model => model.DogumTarihi, new { htmlAttributes = new { @class = "field" } })
                             @Html.ValidationMessageFor(model => model.DogumTarihi, "", new { @class = "text-danger" })
                         </div>
                     </div>
                     <div class="form-group">
-                        @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Adress, new { htmlAttributes = new { @class = "field" } })
+                            @Html.ValidationMessageFor(model => model.Adress, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
                         <div class="col-md-10">
                             @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "field", @placeholder = "Şifre" } })
                             @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })

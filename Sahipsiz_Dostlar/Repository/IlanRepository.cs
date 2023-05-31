@@ -4,9 +4,11 @@ using Sahipsiz_Dostlar.Repository;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
+using System.Web.Helpers;
 using System.Web.Mvc;
 
 namespace Sahipsizler_Dostlar.Repository
@@ -15,14 +17,89 @@ namespace Sahipsizler_Dostlar.Repository
     {
         private readonly Sahipsiz_DostlarDB db = new Sahipsiz_DostlarDB();
 
+
         public void Add(Ilanlar entity)
         {
             try
             {
                 if (db.Ilanlar.Where(x => x.HayvanId == entity.HayvanId) == null)
                 {
+
                     db.Ilanlar.Add(entity);
                     db.SaveChanges();
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        public void Add(Ilanlar entity, HttpPostedFileBase ImgURL)
+        {
+            try
+            {
+                if (db.Ilanlar.Where(x => x.HayvanId == entity.HayvanId) == null)
+                {
+                    if (ImgURL != null)
+                    {
+                        WebImage img = new WebImage(ImgURL.InputStream);
+                        FileInfo imginfo = new FileInfo(ImgURL.FileName);
+
+                        string logoname = Guid.NewGuid().ToString() + imginfo.Extension;
+                        img.Resize(500, 500);
+                        img.Save("~/Uploads/Ilanlar/" + logoname);
+                        entity.ImgURL = "/Uploads/Ilanlar/" + logoname;
+                    }
+                    db.Ilanlar.Add(entity);
+                    db.SaveChanges();
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public void Update(Ilanlar entity)
+        {
+            try
+            {
+                if (db.Ilanlar.Where(x => x.HayvanId == entity.HayvanId) != null)
+                {
+                    db.Entry(entity).State = EntityState.Modified;
+                    db.SaveChanges();
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public void Update(Ilanlar entity,HttpPostedFileBase ImgURL)
+        {
+            try
+            {
+                if (db.Ilanlar.Where(x => x.HayvanId == entity.HayvanId) != null)
+                {
+                    if (ImgURL != null)
+                    {
+                        WebImage img = new WebImage(ImgURL.InputStream);
+                        FileInfo imginfo = new FileInfo(ImgURL.FileName);
+
+                        string logoname = Guid.NewGuid().ToString() + imginfo.Extension;
+                        img.Resize(500, 500);
+                        img.Save("~/Uploads/Ilanlar/" + logoname);
+                        entity.ImgURL = "/Uploads/Ilanlar/" + logoname;
+                    }
+                    db.Entry(entity).State = EntityState.Modified;
+                    db.SaveChanges();
+                }else
+                {
+                    Add(entity, ImgURL);
                 }
             }
             catch (Exception)
@@ -59,21 +136,5 @@ namespace Sahipsizler_Dostlar.Repository
             return db.Ilanlar.Find(id);
         }
 
-        public void Update(Ilanlar entity)
-        {
-            try
-            {
-                if (db.Ilanlar.Where(x => x.HayvanId == entity.HayvanId) != null)
-                {
-                    db.Entry(entity).State = EntityState.Modified;
-                    db.SaveChanges();
-                }
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
-        }
     }
 }

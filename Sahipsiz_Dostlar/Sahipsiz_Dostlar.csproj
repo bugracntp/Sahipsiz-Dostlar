@@ -952,6 +952,8 @@
     <Compile Include="Controllers\AdminControllers\AdminilanController.cs" />
     <Compile Include="Controllers\AdminControllers\AdminkategoriController.cs" />
     <Compile Include="Controllers\AdminControllers\AdminuserController.cs" />
+    <Compile Include="Controllers\AnasayfaController.cs" />
+    <Compile Include="Controllers\IlanController.cs" />
     <Compile Include="Entity\Context\Sahipsiz_DostlarDB.cs" />
     <Compile Include="Entity\Models\Admin.cs" />
     <Compile Include="Entity\Models\Ilanlar.cs" />
@@ -965,6 +967,7 @@
       <DependentUpon>202305291722233_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\ViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\IlanRepository.cs" />
     <Compile Include="Repository\IRepository.cs" />
@@ -1081,6 +1084,9 @@
     <Content Include="Views\Adminuser\Index.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\VerifyAccount.cshtml" />
+    <Content Include="Views\Anasayfa\Index.cshtml" />
+    <Content Include="Views\Ilan\Create.cshtml" />
+    <Content Include="Views\Ilan\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1091,7 +1097,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\AdminLayout\assets\jquery-file-upload\server\php\files\thumbnail\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202305291722233_InitialCreate.resx">

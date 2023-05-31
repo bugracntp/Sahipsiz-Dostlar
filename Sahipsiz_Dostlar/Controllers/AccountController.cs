@@ -32,8 +32,8 @@ namespace Sahipsiz_Dostlar.Controllers
                         Session["KullaniciID"] = login.KullaniciID;
                         Session["Eposta"] = login.Email;
                         Session["Sifre"] = login.Password;
-                        ViewBag.Hata = "Giriş Başarılı";
-                        return View("Login");
+                        ViewBag.login = "Hoşgeldin" + login.Ad+" "+login.Soyad;
+                        return RedirectToAction("Index", "Anasayfa");
                     }
                     else
                     {
@@ -101,7 +101,7 @@ namespace Sahipsiz_Dostlar.Controllers
 
             ViewBag.Message = message;
             ViewBag.Status = Status;
-            return View(user);
+            return RedirectToAction("Index", "Anasayfa");
         }
 
 

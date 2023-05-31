@@ -25,6 +25,15 @@ namespace Sahipsiz_Dostlar.Entity.Models
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
 
+        [Display(Name = "Telefon")]
+        [Required(AllowEmptyStrings = false, ErrorMessage = "Telefon zorunludur")]
+        [DataType(DataType.PhoneNumber)]
+        public string Tel { get; set; }
+
+        [Display(Name = "Adres")]
+        [Required(AllowEmptyStrings = false, ErrorMessage = "Adress zorunludur")]
+        public string Adress { get; set; }
+
         [Display(Name = "Date of birth")]
         [DataType(DataType.Date)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
@@ -34,6 +43,7 @@ namespace Sahipsiz_Dostlar.Entity.Models
         [DataType(DataType.Password)]
         [MinLength(6, ErrorMessage = "6 Karakterden uzun olması gerekmektedir")]
         public string Password { get; set; }
+        [Display(Name = "Doğrulandı mı?")]
         public bool IsEmailVerified { get; set; }
         public System.Guid ActivationCode { get; set; }
     }
