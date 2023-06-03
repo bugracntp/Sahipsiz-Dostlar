@@ -129,5 +129,12 @@ namespace Sahipsiz_Dostlar.Controllers
             return View();
         }
 
+        public ActionResult Logout()
+        {
+            Session["KullaniciID"] = null;
+            Session["Eposta"] = null;
+            Session["Sifre"] = null;
+            return RedirectToAction("Index", "Anasayfa");
+        }
     }
 }
