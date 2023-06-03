@@ -4,43 +4,22 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Web;
 
 namespace Sahipsiz_Dostlar.Repository
 {
     public class KullaniciRepository : IRepository<Kullanici>
     {
-
         private readonly Sahipsiz_DostlarDB db = new Sahipsiz_DostlarDB();
+
         public void Add(Kullanici entity)
         {
             try
             {
-                if (db.Kullanici.Where(x => x.KullaniciID == entity.KullaniciID)==null)
-                {
-                    db.Kullanici.Add(entity);
-                    db.SaveChanges();
-                }
+                db.Kullanici.Add(entity);
+                db.SaveChanges();
             }
             catch (Exception)
             {
-
-                throw;
-            }
-        }
-
-        public void Delete(Kullanici entity)
-        {
-            try
-            {
-                if (db.Kullanici.Where(x => x.KullaniciID == entity.KullaniciID) != null)
-                {
-                    db.Kullanici.Remove(entity);
-                }
-            }
-            catch (Exception)
-            {
-
                 throw;
             }
         }
@@ -54,7 +33,6 @@ namespace Sahipsiz_Dostlar.Repository
         {
             return db.Kullanici.Find(id);
         }
- 
 
         public void Update(Kullanici entity)
         {
@@ -68,7 +46,6 @@ namespace Sahipsiz_Dostlar.Repository
             }
             catch (Exception)
             {
-
                 throw;
             }
         }

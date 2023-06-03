@@ -1,21 +1,13 @@
 ﻿using Sahipsiz_Dostlar.Entity.Context;
 using Sahipsiz_Dostlar.Entity.Models;
 using Sahipsiz_Dostlar.Repository;
-using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
-
 
 namespace Sahipsiz_Dostlar.Controllers
 {
     public class AdminkategoriController : Controller
     {
-        private readonly Sahipsiz_DostlarDB db = new Sahipsiz_DostlarDB();
         private readonly KategoriRepository KR = new KategoriRepository();
 
         // GET: AdminCins
@@ -46,7 +38,7 @@ namespace Sahipsiz_Dostlar.Controllers
         }
 
         // POST: AdminCins/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -77,7 +69,7 @@ namespace Sahipsiz_Dostlar.Controllers
         }
 
         // POST: AdminCins/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -98,7 +90,7 @@ namespace Sahipsiz_Dostlar.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Kategori kategori = db.Kategori.Find(id);
+            Kategori kategori = KR.GetById(id);
             if (kategori == null)
             {
                 return HttpNotFound();
@@ -109,9 +101,14 @@ namespace Sahipsiz_Dostlar.Controllers
         // POST: AdminCins/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(Kategori kategori)
+        public ActionResult DeleteConfirmed(int? id)
         {
-            KR.Delete(kategori);
+            using (var db = new Sahipsiz_DostlarDB())
+            {
+                Kategori kategori = db.Kategori.Find(id);
+                db.Kategori.Remove(kategori);
+                db.SaveChanges();
+            }
             return RedirectToAction("Index");
         }
 
@@ -119,7 +116,10 @@ namespace Sahipsiz_Dostlar.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                using (var db = new Sahipsiz_DostlarDB())
+                {
+                    db.Dispose();
+                }
             }
             base.Dispose(disposing);
         }

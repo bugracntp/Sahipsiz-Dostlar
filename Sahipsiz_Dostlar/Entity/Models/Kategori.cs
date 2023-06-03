@@ -16,6 +16,7 @@ namespace Sahipsiz_Dostlar.Entity.Models
         [DisplayName("Kategori Adı")]
         [Required, StringLength(50, ErrorMessage = "50 karakter olmalıdır")]
         public string KategoriAdi { get; set; }
+        public ICollection<Esbul> Esbul { get; set; }
         public ICollection<Ilanlar> Ilanlar { get; set; }
     }
 }

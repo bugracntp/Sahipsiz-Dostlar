@@ -1,5 +1,6 @@
 ﻿using Sahipsiz_Dostlar.Entity.Context;
 using Sahipsiz_Dostlar.Entity.Models;
+using Sahipsiz_Dostlar.Repository;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -13,12 +14,12 @@ namespace Sahipsiz_Dostlar.Controllers
 {
     public class AdminuserController : Controller
     {
-        private readonly Sahipsiz_DostlarDB db = new Sahipsiz_DostlarDB();
+        private readonly KullaniciRepository KR = new KullaniciRepository();
 
         // GET: Adminuser
         public ActionResult Index()
         {
-            return View(db.Kullanici.ToList());
+            return View(KR.GetAll());
         }
 
         // GET: Adminuser/Details/5
@@ -28,7 +29,7 @@ namespace Sahipsiz_Dostlar.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Kullanici kullanici = db.Kullanici.Find(id);
+            Kullanici kullanici = KR.GetById(id);
             if (kullanici == null)
             {
                 return HttpNotFound();
@@ -47,12 +48,11 @@ namespace Sahipsiz_Dostlar.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "KullaniciID,Eposta,Sifre,Ad,Soyad,Telefon,Adres")] Kullanici kullanici)
+        public ActionResult Create([Bind(Include = "KullaniciID,Ad,Soyad,Email,Tel,Adress,DogumTarihi,Password,IsEmailVerified,ActivationCode")] Kullanici kullanici)
         {
             if (ModelState.IsValid)
             {
-                db.Kullanici.Add(kullanici);
-                db.SaveChanges();
+                KR.Add(kullanici);
                 return RedirectToAction("Index");
             }
 
@@ -66,7 +66,7 @@ namespace Sahipsiz_Dostlar.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Kullanici kullanici = db.Kullanici.Find(id);
+            Kullanici kullanici = KR.GetById(id);
             if (kullanici == null)
             {
                 return HttpNotFound();
@@ -83,8 +83,7 @@ namespace Sahipsiz_Dostlar.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(kullanici).State = EntityState.Modified;
-                db.SaveChanges();
+                KR.Update(kullanici);
                 return RedirectToAction("Index");
             }
             return View(kullanici);
@@ -97,12 +96,16 @@ namespace Sahipsiz_Dostlar.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Kullanici kullanici = db.Kullanici.Find(id);
-            if (kullanici == null)
+            using(var db = new Sahipsiz_DostlarDB())
             {
-                return HttpNotFound();
+                Kullanici kullanici = db.Kullanici.Find(id);
+                if (kullanici == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(kullanici);
             }
-            return View(kullanici);
+
         }
 
         // POST: Adminuser/Delete/5
@@ -110,9 +113,12 @@ namespace Sahipsiz_Dostlar.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Kullanici kullanici = db.Kullanici.Find(id);
-            db.Kullanici.Remove(kullanici);
-            db.SaveChanges();
+            using (var db = new Sahipsiz_DostlarDB())
+            {
+                Kullanici kisi = db.Kullanici.Find(id);
+                db.Kullanici.Remove(kisi);
+                db.SaveChanges();
+            }
             return RedirectToAction("Index");
         }
 
@@ -120,7 +126,10 @@ namespace Sahipsiz_Dostlar.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                using(var db = new Sahipsiz_DostlarDB())
+                {
+                    db.Dispose();
+                }
             }
             base.Dispose(disposing);
         }

@@ -1,22 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
+﻿using Sahipsiz_Dostlar.Entity.Context;
+using Sahipsiz_Dostlar.Entity.Models;
+using Sahipsizler_Dostlar.Repository;
+using System;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using Sahipsiz_Dostlar.Entity.Context;
-using Sahipsiz_Dostlar.Entity.Models;
-using Sahipsizler_Dostlar.Repository;
 
 namespace Sahipsiz_Dostlar.Controllers
 {
     public class AdminilanController : Controller
     {
-        private readonly Sahipsiz_DostlarDB db = new Sahipsiz_DostlarDB();
         private readonly IlanRepository IR = new IlanRepository();
-
 
         // GET: Adminilan
         public ActionResult Index()
@@ -43,21 +37,23 @@ namespace Sahipsiz_Dostlar.Controllers
         // GET: Adminilan/Create
         public ActionResult Create()
         {
+            Sahipsiz_DostlarDB db = new Sahipsiz_DostlarDB();
             ViewBag.KategoriList = new SelectList(db.Kategori, "KategoriID", "KategoriAdi");
+            ViewBag.SehirlerList = new SelectList(db.Sehirler, "SehirID", "SehirAdi");
             return View();
         }
 
         // POST: Adminilan/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "HayvanId,Isim,Tur,Yas,Cinsiyet,Renk,Açıklama,ImgURL")] Ilanlar ilanlar, HttpPostedFileBase ImgURL)
+        public ActionResult Create([Bind(Include = "HayvanId,Isim,KategoriID,Tur,Yas,Cinsiyet,Renk,Açıklama,SehirID,ImgURL,SahiplendirmeDurumu,KullaniciId")] Ilanlar ilanlar, HttpPostedFileBase ImgURL)
         {
             if (ModelState.IsValid)
             {
                 ilanlar.KullaniciId = Convert.ToInt32(Session["KullaniciID"]);
-                IR.Add(ilanlar,ImgURL);
+                IR.Add(ilanlar, ImgURL);
                 return RedirectToAction("Index");
             }
 
@@ -80,15 +76,15 @@ namespace Sahipsiz_Dostlar.Controllers
         }
 
         // POST: Adminilan/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "HayvanId,Isim,Tur,Yas,Cinsiyet,Renk,Açıklama,SahiplendirmeDurumu,ImgURL")] Ilanlar ilanlar,HttpPostedFileBase ImgURL)
+        public ActionResult Edit([Bind(Include = "HayvanId,Isim,KategoriID,Tur,Yas,Cinsiyet,Renk,Açıklama,SehirID,ImgURL,SahiplendirmeDurumu,KullaniciId")] Ilanlar ilanlar, HttpPostedFileBase ImgURL)
         {
             if (ModelState.IsValid)
             {
-                IR.Update(ilanlar, ImgURL);   
+                IR.Update(ilanlar, ImgURL);
                 return RedirectToAction("Index");
             }
             return View(ilanlar);
@@ -112,9 +108,14 @@ namespace Sahipsiz_Dostlar.Controllers
         // POST: Adminilan/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(Ilanlar ilan)
+        public ActionResult DeleteConfirmed(int? id)
         {
-            IR.Delete(ilan);
+            using (var db = new Sahipsiz_DostlarDB())
+            {
+                var silinecekIlan = db.Ilanlar.Find(id);
+                db.Ilanlar.Remove(silinecekIlan);
+                db.SaveChanges();
+            }
             return RedirectToAction("Index");
         }
 
@@ -122,7 +123,10 @@ namespace Sahipsiz_Dostlar.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                using (var db = new Sahipsiz_DostlarDB())
+                {
+                    db.Dispose();
+                }
             }
             base.Dispose(disposing);
         }

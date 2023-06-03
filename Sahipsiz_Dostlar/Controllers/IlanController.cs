@@ -1,4 +1,5 @@
-﻿using Sahipsiz_Dostlar.Entity.Models;
+﻿using Sahipsiz_Dostlar.Entity.Context;
+using Sahipsiz_Dostlar.Entity.Models;
 using Sahipsiz_Dostlar.Models;
 using Sahipsiz_Dostlar.Repository;
 using Sahipsizler_Dostlar.Repository;
@@ -15,8 +16,8 @@ namespace Sahipsiz_Dostlar.Controllers
 {
     public class IlanController : Controller
     {
-        IlanRepository IR = new IlanRepository();
-        KategoriRepository KR = new KategoriRepository();
+        private readonly IlanRepository IR = new IlanRepository();
+        private readonly KategoriRepository KR = new KategoriRepository();
         // GET: Ilan
         public ActionResult Index()
         {
@@ -97,10 +98,26 @@ namespace Sahipsiz_Dostlar.Controllers
         // POST: Ilan/Delete/ID
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(Ilanlar ilan)
+        public ActionResult DeleteConfirmed(int? id)
         {
-            IR.Delete(ilan);
+            using (var db = new Sahipsiz_DostlarDB())
+            {
+                db.Ilanlar.Remove(IR.GetById(id));
+                db.SaveChanges();
+            }
             return RedirectToAction("Index");
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                using (var db = new Sahipsiz_DostlarDB())
+                {
+                    db.Dispose();
+                }
+            }
+            base.Dispose(disposing);
         }
     }
 }

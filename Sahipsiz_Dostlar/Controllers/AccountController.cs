@@ -12,7 +12,7 @@ namespace Sahipsiz_Dostlar.Controllers
 {
     public class AccountController : Controller
     {
-        KullaniciRepository KR = new KullaniciRepository();
+        private readonly KullaniciRepository KR = new KullaniciRepository();
         // GET: Account
         public ActionResult login()
         {

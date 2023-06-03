@@ -75,6 +75,13 @@
     </div>
 
     <div class="form-group">
+        @Html.LabelFor(model => model.SehirID, "Sehir", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("SehirID", ViewBag.SehirlerList as SelectList, "-- Select --", new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.SehirID, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
         @Html.LabelFor(model => model.ImgURL, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.EditorFor(model => model.ImgURL, new { htmlAttributes = new { @class = "form-control" } })

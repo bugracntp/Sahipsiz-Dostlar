@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel;
 using System.Linq;
 using System.Web;
 
@@ -34,12 +34,14 @@ namespace Sahipsiz_Dostlar.Entity.Models
         [DisplayName("Açıklama")]
         [StringLength(250, ErrorMessage = "250 karakter olmalıdır")]
         public string Açıklama { get; set; }
+        [DisplayName("Sehir")]
+        public int? SehirID { get; set; }
+        public Sehir Sehir { get; set; }
         [DisplayName("Fotoğraf")]
         public string ImgURL { get; set; }
         [DisplayName("Durumu")]
         public bool SahiplendirmeDurumu { get; set; }
         public Kullanici SahipId { get; set; }
         public int? KullaniciId { get; set; }
-
     }
 }

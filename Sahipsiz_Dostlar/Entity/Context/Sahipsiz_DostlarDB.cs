@@ -16,5 +16,7 @@ namespace Sahipsiz_Dostlar.Entity.Context
         public DbSet<Kategori> Kategori { get; set; }
         public DbSet<Ilanlar> Ilanlar { get; set; }
         public DbSet<Kullanici> Kullanici { get; set; }
+        public DbSet<Sehir> Sehirler { get; set; }
+        public DbSet<Esbul> Esbul { get; set; }
     }
 }

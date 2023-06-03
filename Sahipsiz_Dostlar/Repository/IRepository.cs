@@ -14,7 +14,6 @@ namespace Sahipsiz_Dostlar.Repository
         T GetById(int? id);
         void Add(T entity);
         void Update(T entity);
-        void Delete(T entity);
 
     }
 }

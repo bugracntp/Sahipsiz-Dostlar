@@ -6,58 +6,47 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.IO;
 using System.Linq;
-using System.Net;
 using System.Web;
 using System.Web.Helpers;
-using System.Web.Mvc;
 
 namespace Sahipsizler_Dostlar.Repository
 {
-    public class IlanRepository:IRepository<Ilanlar>
+    public class IlanRepository : IRepository<Ilanlar>
     {
         private readonly Sahipsiz_DostlarDB db = new Sahipsiz_DostlarDB();
-
 
         public void Add(Ilanlar entity)
         {
             try
             {
-                if (db.Ilanlar.Where(x => x.HayvanId == entity.HayvanId) == null)
-                {
-
-                    db.Ilanlar.Add(entity);
-                    db.SaveChanges();
-                }
+                db.Ilanlar.Add(entity);
+                db.SaveChanges();
             }
             catch (Exception)
             {
-
                 throw;
             }
         }
+
         public void Add(Ilanlar entity, HttpPostedFileBase ImgURL)
         {
             try
             {
-                if (db.Ilanlar.Where(x => x.HayvanId == entity.HayvanId) == null)
+                if (ImgURL != null)
                 {
-                    if (ImgURL != null)
-                    {
-                        WebImage img = new WebImage(ImgURL.InputStream);
-                        FileInfo imginfo = new FileInfo(ImgURL.FileName);
+                    WebImage img = new WebImage(ImgURL.InputStream);
+                    FileInfo imginfo = new FileInfo(ImgURL.FileName);
 
-                        string logoname = Guid.NewGuid().ToString() + imginfo.Extension;
-                        img.Resize(500, 500);
-                        img.Save("~/Uploads/Ilanlar/" + logoname);
-                        entity.ImgURL = "/Uploads/Ilanlar/" + logoname;
-                    }
-                    db.Ilanlar.Add(entity);
-                    db.SaveChanges();
+                    string logoname = Guid.NewGuid().ToString() + imginfo.Extension;
+                    img.Resize(500, 500);
+                    img.Save("~/Uploads/Ilanlar/" + logoname);
+                    entity.ImgURL = "/Uploads/Ilanlar/" + logoname;
                 }
+                db.Ilanlar.Add(entity);
+                db.SaveChanges();
             }
             catch (Exception)
             {
-
                 throw;
             }
         }
@@ -74,12 +63,11 @@ namespace Sahipsizler_Dostlar.Repository
             }
             catch (Exception)
             {
-
                 throw;
             }
         }
 
-        public void Update(Ilanlar entity,HttpPostedFileBase ImgURL)
+        public void Update(Ilanlar entity, HttpPostedFileBase ImgURL)
         {
             try
             {
@@ -97,31 +85,14 @@ namespace Sahipsizler_Dostlar.Repository
                     }
                     db.Entry(entity).State = EntityState.Modified;
                     db.SaveChanges();
-                }else
+                }
+                else
                 {
                     Add(entity, ImgURL);
                 }
             }
             catch (Exception)
             {
-
-                throw;
-            }
-        }
-
-        public void Delete(Ilanlar entity)
-        {
-            try
-            {
-                if (db.Ilanlar.Where(x => x.HayvanId == entity.HayvanId) != null)
-                {
-                    db.Ilanlar.Remove(entity);
-                    db.SaveChanges();
-                }
-            }
-            catch (Exception)
-            {
-
                 throw;
             }
         }
@@ -135,6 +106,5 @@ namespace Sahipsizler_Dostlar.Repository
         {
             return db.Ilanlar.Find(id);
         }
-
     }
 }
