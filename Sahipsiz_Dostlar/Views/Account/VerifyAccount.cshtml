@@ -3,11 +3,9 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Hesap onaylama</h2>
-
-<div class="login">
+<div class="verify">
     <div class="container">
-        <div class="contact-box">
+        <div class="verify-box">
             @if (ViewBag.Status != null && Convert.ToBoolean(ViewBag.Status))
             {
                 <div>

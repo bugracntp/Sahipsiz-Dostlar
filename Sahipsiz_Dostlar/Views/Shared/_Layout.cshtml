@@ -16,6 +16,43 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Roboto:wght@300;400;500;700 family=Oswald:wght@600&display=swap"
           rel="stylesheet">
+    <style>
+
+        .dm-profil {
+            display: inline-block;
+            position: relative;
+        }
+
+            .dm-profil button ion-icon {
+                font-size: 2.5rem;
+            }
+
+        .di-profil {
+            display: none;
+            position: absolute;
+            overflow: auto;
+            background-color: var(--eerie-black-1);
+            color: var(--white);
+            min-width: 120px;
+            min-height: 100px;
+            text-align: center;
+            z-index: 1;
+            left: -31px;
+        }
+
+            .di-profil a {
+                border: #fff 1px solid;
+                padding: 10px;
+            }
+
+                .di-profil a:hover {
+                    background-color: var(--white_10);
+                }
+
+        .dm-profil:hover .di-profil {
+            display: block;
+        }
+    </style>
 </head>
 
 <body>
@@ -23,7 +60,7 @@
     <header class="header" data-header>
         <div class="container">
             <h1>
-                <a href="#" class="logo">Sahipsizler</a>
+                <a href="#" class="logo"><img src="~/Content//images/logo.png" alt="" width="100px" /></a>
             </h1>
 
             <button class="nav-open-btn" aria-label="Open Menu" data-nav-open-btn>
@@ -43,13 +80,25 @@
                     </li>
                     <li>
                         <a href="/Ilan" class="navbar-link" data-nav-link>
-                            <span>İlanlar</span>
+                            <span>Sahiplen</span>
+                            <ion-icon name="chevron-forward-outline" aria-hidden="true"></ion-icon>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Esbul" class="navbar-link" data-nav-link>
+                            <span>Eşbul</span>
                             <ion-icon name="chevron-forward-outline" aria-hidden="true"></ion-icon>
                         </a>
                     </li>
                     <li>
                         <a href="/Ilan/Create" class="navbar-link" data-nav-link>
-                            <span>İlan Ver</span>
+                            <span>Sahiplendir</span>
+                            <ion-icon name="chevron-forward-outline" aria-hidden="true"></ion-icon>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Ilan/Create" class="navbar-link" data-nav-link>
+                            <span>Eş Ara</span>
                             <ion-icon name="chevron-forward-outline" aria-hidden="true"></ion-icon>
                         </a>
                     </li>
@@ -62,14 +111,28 @@
                 </ul>
             </nav>
 
-            <div class="header-action">
-                <button class="search-btn" aria-label="Search">
-                    <ion-icon name="search-outline"></ion-icon>
-                </button>
-                <a class="btn btn-primary" href="/Account/Login">
+            @if (Session["KullaniciID"] != null)
+            {
+
+                <div class="dm-profil">
+                    <button class="btn btn-primary">
+                        <ion-icon name="person-circle-outline"></ion-icon>
+                    </button>
+                    <div class="di-profil">
+                        <a href="#">İlanlarım</a>
+                        <a href="#">Ayarlar</a>
+                        <a href="#">Çıkış yap</a>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div class="header-action">
+                    <a class="btn btn-primary" href="/Account/Login">
                         Giriş Yap
-                </a>
-            </div>
+                    </a>
+                </div>
+            }
         </div>
     </header>
 
@@ -92,13 +155,11 @@
                 <li>
                     <a href="#" class="footer-link">Privacy & Policy</a>
                 </li>
-
             </ul>
 
             <p class="copyright">
                 Copyright 2022 <a href="#" class="copyright-link">codewithsadee</a>. All Rights Reserved.
             </p>
-
         </div>
     </footer>
 
@@ -107,7 +168,5 @@
     <!-- ionicon link -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-
 </body>
-
 </html>

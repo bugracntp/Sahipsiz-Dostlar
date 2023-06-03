@@ -168,7 +168,6 @@ body {
 #REUSED STYLE
 \*-----------------------------------*/
 
-
 .container {
     padding-inline: 15px;
 }
@@ -181,7 +180,6 @@ body {
     margin-right: -15px;
     margin-left: -15px
 }
-
 
 .section-subtitle {
     color: var(--color, var(--pistachio));
@@ -217,7 +215,6 @@ body {
     color: var(--white);
     font-size: var(--fs-6);
 }
-
 
 .btn {
     position: relative;
@@ -329,11 +326,14 @@ body {
     }
 
 .logo {
-    color: var(--white);
-    font-family: var(--ff-oswald);
-    font-size: 2.2rem;
-    text-transform: uppercase;
+    margin-right: 20px;
 }
+
+    .logo img {
+        height: 100px;
+        width: 100px;
+        object-fit: contain;
+    }
 
 .nav-open-btn {
     color: var(--white);
@@ -412,6 +412,7 @@ body {
         background-color: var(--pistachio);
     }
 
+
 /*----------- Hero ---------------*/
 
 .anasayfa {
@@ -442,6 +443,7 @@ body {
     align-items: center;
     position: relative;
 }
+
 .login {
     background: linear-gradient(to bottom, var(--eerie-black-1), var(--pistachio));
     color: var(--white);
@@ -450,6 +452,26 @@ body {
     display: grid;
     align-items: center;
     position: relative;
+}
+
+.verify {
+    background: linear-gradient(to bottom, var(--eerie-black-1), var(--pistachio));
+    color: var(--eerie-black-1);
+    min-height: 900px;
+    align-items: center;
+    position: relative;
+}
+
+.verify-box {
+    position: absolute;
+    top: 20%;
+    left: 25%;
+    background-color: var(--white);
+    min-height: 300px;
+    min-width: 800px;
+    text-align: center;
+    font-weight: var(--fw-700);
+    font-size: var(--fs-5);
 }
 
 .anasayfa .section-subtitle {
@@ -603,7 +625,6 @@ body {
     font-weight: var(--fw-500);
 }
 
-
 /*----------- CTA ---------------*/
 
 .cta-content {
@@ -630,7 +651,6 @@ body {
 }
 
 /*----------- Service ---------------*/
-
 
 .service {
     background-color: var(--baby-powder);
@@ -744,7 +764,6 @@ body {
     --fs-5: 2.1rem;
 }
 
-
 .card-wrapper {
     display: flex;
     flex-wrap: wrap;
@@ -825,25 +844,25 @@ body {
     width: 50%;
 }
 
-
 /*-----------FORM---------------------*/
 .ilanver {
     position: relative;
 }
-.ilanver > .container > .contact-box {
-    position: absolute;
-    top: 20%;
-    left: 18%;
-    min-width: 850px;
-    max-width: 850px;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    background-color: #fff;
-    box-shadow: 0px 0px 19px 5px rgba(0, 0, 0, 0.19);
-}
+
+    .ilanver > .container > .contact-box {
+        position: absolute;
+        top: 20%;
+        left: 18%;
+        min-width: 850px;
+        max-width: 850px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        background-color: #fff;
+        box-shadow: 0px 0px 19px 5px rgba(0, 0, 0, 0.19);
+    }
 
 .login > .container > .contact-box {
     position: absolute;
@@ -859,10 +878,11 @@ body {
     background-color: #fff;
     box-shadow: 0px 0px 19px 5px rgba(0, 0, 0, 0.19);
 }
+
 .left {
     background-size: cover;
     height: 100%;
-    border-right:3px solid var(--eerie-black-1); 
+    border-right: 3px solid var(--eerie-black-1);
 }
 
 .left-img {
@@ -875,9 +895,11 @@ body {
     padding: 25px 40px;
     position: relative;
 }
+
 .right {
     padding: 25px 40px;
 }
+
 .ilanver-title {
     color: var(--eerie-black-1);
     position: relative;
@@ -923,7 +945,6 @@ textarea {
 
 /*----------TESTIMONIALS-------------*/
 
-
 .testi {
     background-color: var(--jet);
 }
@@ -966,7 +987,6 @@ textarea {
     background-color: var(--light-gray);
 }
 
-
 /*------------PARTNER---------------*/
 
 .partner {
@@ -990,7 +1010,6 @@ textarea {
 .partner-logo .gray {
     display: block;
 }
-
 
 /*-------------EVENT--------------*/
 
@@ -1173,7 +1192,6 @@ textarea {
 */
 
 @media (min-width: 450px) {
-
     /**
     * CUSTOM PROPERTY
     */
@@ -1200,7 +1218,6 @@ textarea {
 */
 
 @media (min-width: 580px) {
-
     /**
     * CUSTOM PROPERTY
     */
@@ -1269,7 +1286,6 @@ textarea {
 */
 
 @media (min-width: 768px) {
-
     /**
     * FEATURES, SERVICE
     */
@@ -1345,14 +1361,11 @@ textarea {
     }
 }
 
-
-
 /**
 * responsive for larger than 992px screen
 */
 
 @media (min-width: 992px) {
-
     /**
     * CUSTOM PROPERTY
     */
@@ -1415,7 +1428,6 @@ textarea {
         background-position: left;
         min-height: 880px;
     }
-
 
     /**
     * FEATURES
@@ -1533,13 +1545,11 @@ textarea {
     }
 }
 
-
 /**
 * responsive for larger than 1200px screen
 */
 
 @media (min-width: 1200px) {
-
     /**
     * CUSTOM PROPERTY
     */

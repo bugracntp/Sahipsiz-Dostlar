@@ -954,6 +954,7 @@
     <Compile Include="Controllers\AdminControllers\AdminkategoriController.cs" />
     <Compile Include="Controllers\AdminControllers\AdminuserController.cs" />
     <Compile Include="Controllers\AnasayfaController.cs" />
+    <Compile Include="Controllers\EsbulController.cs" />
     <Compile Include="Controllers\IlanController.cs" />
     <Compile Include="Data\Sahipsiz_DostlarContext.cs" />
     <Compile Include="Entity\Context\Sahipsiz_DostlarDB.cs" />
@@ -1097,11 +1098,7 @@
     <Content Include="Views\Adminesbul\Create.cshtml" />
     <Content Include="Views\Adminesbul\Edit.cshtml" />
     <Content Include="Views\Adminesbul\Delete.cshtml" />
-    <Content Include="Views\Esbuls\Create.cshtml" />
-    <Content Include="Views\Esbuls\Delete.cshtml" />
-    <Content Include="Views\Esbuls\Details.cshtml" />
-    <Content Include="Views\Esbuls\Edit.cshtml" />
-    <Content Include="Views\Esbuls\Index.cshtml" />
+    <Content Include="Views\Esbul\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

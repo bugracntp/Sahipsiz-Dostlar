@@ -10,5 +10,6 @@ namespace Sahipsiz_Dostlar.Models
     {
         public List<Ilanlar> Ilanlar { get; set; }
         public List<Kategori> Kategori { get; set; }
+        public List<Esbul> Esbul { get; set; }
     }
 }

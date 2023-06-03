@@ -1,0 +1,62 @@
+﻿@model Sahipsiz_Dostlar.Models.ViewModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- hero -->
+<section class="ilanlar" id="home">
+    <div class="container">
+        <h2 class="h1 ilanlar-title">
+            <strong>İlan Listesi</strong>
+        </h2>
+        <p class="ilanlar-text">
+            Evlerimizde beslediğimiz küçük dostlarımzı satmak yerine sahiplendirmek istiyoruz. Bu yüzden böyle bir platform oluşturduk.
+            Bizlere destek olmak ve hayvan dostlarımıza sahip çıkmak için lütfen satın almak yerine sahiplendirme yapınız. Bunun için bize katılabilirsiniz.
+        </p>
+    </div>
+</section>
+<!-- Posts -->
+<section class="section post" id="esbul">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 categories">
+                <h3 class="widget-title">Categories</h3>
+                <ul>
+                    @foreach (var item in Model.Kategori)
+                    {
+                        <li>
+                            <a href="#" class="categori-link" data-nav-link>
+                                <span>@item.KategoriAdi</span>
+                                <ion-icon name="chevron-forward-outline" aria-hidden="true"></ion-icon>
+                            </a>
+                        </li>
+                    }
+                </ul>
+            </div>
+
+            <ul class="posts-list col-lg-9">
+                @foreach (var item in Model.Esbul)
+                {
+                    <li>
+                        <div class="post-card">
+                            <figure class="card-banner">
+                                <img src="/Content/images/donate-1.jpg" width="420" height="325" loading="lazy"
+                                     alt="Elephant" class="img-cover">
+                            </figure>
+                            <div class="card-content">
+                                <h3 class="h3 card-title">@item.Isim</h3>
+                                <button class="btn btn-secondary">
+                                    <span>İlanı Göster</span>
+                                    <ion-icon name="heart-outline" aria-hidden="true"></ion-icon>
+                                </button>
+                            </div>
+                        </div>
+                    </li>
+                }
+
+            </ul>
+        </div><!-- end row -->
+    </div>
+</section>
