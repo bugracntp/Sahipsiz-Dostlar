@@ -2,10 +2,10 @@
 using Sahipsiz_Dostlar.Entity.Models;
 using Sahipsiz_Dostlar.Repository;
 using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.IO;
 using System.Net;
 using System.Web;
+using System.Web.Helpers;
 using System.Web.Mvc;
 
 namespace Sahipsiz_Dostlar.Controllers.AdminControllers
@@ -13,13 +13,13 @@ namespace Sahipsiz_Dostlar.Controllers.AdminControllers
     public class AdminesbulController : Controller
     {
         private readonly EsbulRepository ER = new EsbulRepository();
+
         // GET: Adminesbul
         public ActionResult Index()
         {
             Session["KullaniciID"] = 1;
             return View(ER.GetAll());
         }
-
 
         // GET: Adminilan/Details/5
         public ActionResult Details(int? id)
@@ -40,14 +40,14 @@ namespace Sahipsiz_Dostlar.Controllers.AdminControllers
         public ActionResult Create()
         {
             Sahipsiz_DostlarDB db = new Sahipsiz_DostlarDB();
-                ViewBag.KategoriList = new SelectList(db.Kategori, "KategoriID", "KategoriAdi");
-                ViewBag.SehirlerList = new SelectList(db.Sehirler, "SehirID", "SehirAdi");
+            ViewBag.KategoriList = new SelectList(db.Kategori, "KategoriID", "KategoriAdi");
+            ViewBag.SehirlerList = new SelectList(db.Sehirler, "SehirID", "SehirAdi");
 
             return View();
         }
 
         // POST: Adminilan/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -66,16 +66,15 @@ namespace Sahipsiz_Dostlar.Controllers.AdminControllers
         // GET: Adminilan/Edit/5
         public ActionResult Edit(int? id)
         {
-
             Sahipsiz_DostlarDB db = new Sahipsiz_DostlarDB();
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Esbul ilan = ER.GetById(id);
-                ViewBag.KategoriList = new SelectList(db.Kategori, "KategoriID", "KategoriAdi");
-                ViewBag.SehirlerList = new SelectList(db.Sehirler, "SehirID", "SehirAdi");
- 
+            ViewBag.KategoriList = new SelectList(db.Kategori, "KategoriID", "KategoriAdi");
+            ViewBag.SehirlerList = new SelectList(db.Sehirler, "SehirID", "SehirAdi");
+
             if (ilan == null)
             {
                 return HttpNotFound();
@@ -84,18 +83,26 @@ namespace Sahipsiz_Dostlar.Controllers.AdminControllers
         }
 
         // POST: Adminilan/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "HayvanId,Isim,KategoriID,Tur,Yas,Cinsiyet,Renk,Açıklama,SehirID,ImgURL,SahiplendirmeDurumu,KullaniciId")] Esbul ilanlar, HttpPostedFileBase ImgURL)
+        public ActionResult Edit([Bind(Include = "HayvanId,Isim,KategoriID,Tur,Yas,Cinsiyet,Renk,Açıklama,SehirID,ImgURL,SahiplendirmeDurumu,KullaniciId")] Esbul entity, HttpPostedFileBase ImgURL)
         {
             if (ModelState.IsValid)
             {
-                ER.Update(ilanlar, ImgURL);
-                return RedirectToAction("Index");
+                if (ImgURL != null)
+                {
+                    using (Sahipsiz_DostlarDB db = new Sahipsiz_DostlarDB()) {
+                        var ilan = db.Esbul.Find(entity.HayvanId);
+                        if (ImgURL != null && ImgURL.ContentLength > 0)
+                            System.IO.File.Delete(Server.MapPath((ilan.ImgURL)));
+                    }
+                    ER.Update(entity, ImgURL);
+                    return RedirectToAction("Index");
+                }
             }
-            return View(ilanlar);
+            return View(entity);
         }
 
         // GET: Adminilan/Delete/5

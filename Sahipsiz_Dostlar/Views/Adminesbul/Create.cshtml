@@ -6,7 +6,7 @@
 
 <h2>Yeni Kayıt Ekranı</h2>
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Create", "Adminesbul", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
 
@@ -84,7 +84,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.ImgURL, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.ImgURL, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.ImgURL, new { htmlAttributes = new { @class = "form-control", @type = "file", @accept = ".jpg,.png,.jpeg" } })
                 @Html.ValidationMessageFor(model => model.ImgURL, "", new { @class = "text-danger" })
             </div>
         </div>

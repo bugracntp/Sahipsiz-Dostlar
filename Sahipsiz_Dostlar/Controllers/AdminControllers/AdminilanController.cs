@@ -47,6 +47,7 @@ namespace Sahipsiz_Dostlar.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [ValidateInput(false)]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "HayvanId,Isim,KategoriID,Tur,Yas,Cinsiyet,Renk,Açıklama,SehirID,ImgURL,SahiplendirmeDurumu,KullaniciId")] Ilanlar ilanlar, HttpPostedFileBase ImgURL)
         {
@@ -84,6 +85,12 @@ namespace Sahipsiz_Dostlar.Controllers
         {
             if (ModelState.IsValid)
             {
+                using (Sahipsiz_DostlarDB db = new Sahipsiz_DostlarDB())
+                {
+                    var ilan = db.Esbul.Find(ilanlar.HayvanId);
+                    if (ImgURL != null && ImgURL.ContentLength > 0)
+                        System.IO.File.Delete(Server.MapPath((ilan.ImgURL)));
+                }
                 IR.Update(ilanlar, ImgURL);
                 return RedirectToAction("Index");
             }

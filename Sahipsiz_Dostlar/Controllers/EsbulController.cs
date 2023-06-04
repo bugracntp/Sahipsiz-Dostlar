@@ -1,4 +1,5 @@
-﻿using Sahipsiz_Dostlar.Models;
+﻿using Sahipsiz_Dostlar.Entity.Models;
+using Sahipsiz_Dostlar.Models;
 using Sahipsiz_Dostlar.Repository;
 using Sahipsizler_Dostlar.Repository;
 using System;
@@ -20,6 +21,27 @@ namespace Sahipsiz_Dostlar.Controllers
             vm.Kategori = KR.GetAll();
             vm.Esbul = ER.GetAll();
             return View(vm);
+        }
+        // GET: Icerikler/Create
+        [HttpGet]
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+
+        // POST: Icerikler/Create
+        [HttpPost]
+        public ActionResult Create(Esbul ilan, HttpPostedFileBase ImgURL)
+        {
+            Console.WriteLine(ilan);
+            if (ModelState.IsValid)
+            {
+                ER.Add(ilan, ImgURL);
+                return RedirectToAction("Index");
+
+            }
+            return View(ilan);
         }
     }
 }

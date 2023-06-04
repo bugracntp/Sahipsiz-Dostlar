@@ -85,11 +85,11 @@ namespace Sahipsiz_Dostlar.Repository
                     {
                         WebImage img = new WebImage(ImgURL.InputStream);
                         FileInfo imginfo = new FileInfo(ImgURL.FileName);
-
                         string logoname = Guid.NewGuid().ToString() + imginfo.Extension;
+
                         img.Resize(500, 500);
-                        img.Save("~/Uploads/Ilanlar/" + logoname);
-                        entity.ImgURL = "/Uploads/Ilanlar/" + logoname;
+                        img.Save("~/Uploads/Esbul/" + logoname);
+                        entity.ImgURL = "/Uploads/Esbul/" + logoname;
                     }
                     DB.Entry(entity).State = EntityState.Modified;
                     DB.SaveChanges();
