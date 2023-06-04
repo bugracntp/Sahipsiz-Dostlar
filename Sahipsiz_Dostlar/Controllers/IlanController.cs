@@ -27,6 +27,20 @@ namespace Sahipsiz_Dostlar.Controllers
             return View(vm);
         }
 
+        public ActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Ilanlar ilan = IR.GetById(id);
+            if (ilan == null)
+            {
+                return HttpNotFound();
+            }
+            return View(ilan);
+        }   
+
 
         // GET: Icerikler/Create
         [HttpGet]

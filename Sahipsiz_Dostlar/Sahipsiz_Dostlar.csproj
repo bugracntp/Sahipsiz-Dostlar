@@ -1106,6 +1106,8 @@
     <Content Include="Views\Adminesbul\Edit.cshtml" />
     <Content Include="Views\Adminesbul\Delete.cshtml" />
     <Content Include="Views\Esbul\Index.cshtml" />
+    <Content Include="Views\Esbul\Create.cshtml" />
+    <Content Include="Views\Ilan\Details.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

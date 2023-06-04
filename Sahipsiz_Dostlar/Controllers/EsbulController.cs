@@ -5,6 +5,7 @@ using Sahipsizler_Dostlar.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
@@ -21,6 +22,20 @@ namespace Sahipsiz_Dostlar.Controllers
             vm.Kategori = KR.GetAll();
             vm.Esbul = ER.GetAll();
             return View(vm);
+        }
+
+        public ActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Esbul esbul = ER.GetById(id);
+            if (esbul == null)
+            {
+                return HttpNotFound();
+            }
+            return View(esbul);
         }
         // GET: Icerikler/Create
         [HttpGet]
