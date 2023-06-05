@@ -4,12 +4,9 @@ using Sahipsiz_Dostlar.Models;
 using Sahipsiz_Dostlar.Repository;
 using Sahipsizler_Dostlar.Repository;
 using System;
-using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
-using System.Web.Helpers;
 using System.Web.Mvc;
 
 namespace Sahipsiz_Dostlar.Controllers
@@ -18,6 +15,8 @@ namespace Sahipsiz_Dostlar.Controllers
     {
         private readonly IlanRepository IR = new IlanRepository();
         private readonly KategoriRepository KR = new KategoriRepository();
+        private readonly KullaniciRepository KUR = new KullaniciRepository();
+
         // GET: Ilan
         public ActionResult Index()
         {
@@ -33,14 +32,20 @@ namespace Sahipsiz_Dostlar.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Ilanlar ilan = IR.GetById(id);
+            var ilan = IR.GetById(id);
+            ViewBag.Kategori = KR.GetById(ilan.KategoriID).KategoriAdi;
+            ViewBag.Kullanici = KUR.GetById(ilan.KullaniciId).Ad+" "+ KUR.GetById(ilan.KullaniciId).Soyad;
+            using (var db = new Sahipsiz_DostlarDB())
+            {
+                ViewBag.Sehir = db.Sehirler.Where(x => x.SehirID == ilan.SehirID).FirstOrDefault().SehirAdi;
+            }
+            
             if (ilan == null)
             {
                 return HttpNotFound();
             }
             return View(ilan);
-        }   
-
+        }
 
         // GET: Icerikler/Create
         [HttpGet]
@@ -48,7 +53,6 @@ namespace Sahipsiz_Dostlar.Controllers
         {
             return View();
         }
-
 
         // POST: Icerikler/Create
         [HttpPost]
@@ -59,7 +63,6 @@ namespace Sahipsiz_Dostlar.Controllers
             {
                 IR.Add(ilan, ImgURL);
                 return RedirectToAction("Index");
-
             }
             return View(ilan);
         }
@@ -85,7 +88,7 @@ namespace Sahipsiz_Dostlar.Controllers
         {
             try
             {
-                IR.Update(ilan,ImgURL);
+                IR.Update(ilan, ImgURL);
                 return RedirectToAction("Index");
             }
             catch

@@ -444,6 +444,16 @@ body {
     position: relative;
 }
 
+.ayrýntilar {
+    background: linear-gradient(to bottom, var(--eerie-black-1), var(--pistachio));
+    color: var(--white);
+    min-height: 700px;
+    padding-block: 120px 60px;
+    display: grid;
+    align-items: center;
+    position: relative;
+}
+
 .login {
     background: linear-gradient(to bottom, var(--eerie-black-1), var(--pistachio));
     color: var(--white);
@@ -877,6 +887,19 @@ body {
     text-align: center;
     background-color: #fff;
     box-shadow: 0px 0px 19px 5px rgba(0, 0, 0, 0.19);
+}
+
+.row > .ayrintilar-box {
+    min-width: 950px;
+    max-width: 950px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    box-shadow: 0px 0px 19px 5px rgba(0, 0, 0, 0.19);
+    margin-left: 30px;
+    color: var(--eerie-black-1);
 }
 
 .left {

@@ -1,7 +1,9 @@
 ﻿using Sahipsiz_Dostlar.Entity.Context;
 using Sahipsiz_Dostlar.Entity.Models;
+using Sahipsiz_Dostlar.Models;
 using Sahipsiz_Dostlar.Repository;
 using Sahipsiz_Dostlar.Validators;
+using Sahipsizler_Dostlar.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,12 +14,15 @@ namespace Sahipsiz_Dostlar.Controllers
 {
     public class AccountController : Controller
     {
-        private readonly KullaniciRepository KR = new KullaniciRepository();
+        private readonly EsbulRepository ER = new EsbulRepository();
+        private readonly IlanRepository IR = new IlanRepository();
+        private readonly KullaniciRepository KUR = new KullaniciRepository();
         // GET: Account
         public ActionResult login()
         {
             return View();
         }
+
 
         [HttpPost]
         public ActionResult Login(Kullanici loginModel)
@@ -135,6 +140,27 @@ namespace Sahipsiz_Dostlar.Controllers
             Session["Eposta"] = null;
             Session["Sifre"] = null;
             return RedirectToAction("Index", "Anasayfa");
+        }
+
+        public ActionResult Profil()
+        {
+            if (Session["KullaniciID"] != null)
+            {
+                int id = Convert.ToInt32(Session["KullaniciID"]);
+                var kullanici = KUR.GetById(id);
+                using (var db = new Sahipsiz_DostlarDB())
+                {
+                    ViewModel vm = new ViewModel();
+                    vm.Ilanlar = db.Ilanlar.Where(x => x.KullaniciId == id).ToList();
+                    vm.Esbul = db.Esbul.Where(x => x.KullaniciId == id).ToList();
+
+                    return View(vm);
+                }
+            }
+            else
+            {
+                return RedirectToAction("Index", "Anasayfa");
+            }
         }
     }
 }

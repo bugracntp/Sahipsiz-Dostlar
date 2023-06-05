@@ -963,7 +963,6 @@
     <Compile Include="Controllers\AnasayfaController.cs" />
     <Compile Include="Controllers\EsbulController.cs" />
     <Compile Include="Controllers\IlanController.cs" />
-    <Compile Include="Data\Sahipsiz_DostlarContext.cs" />
     <Compile Include="Entity\Context\Sahipsiz_DostlarDB.cs" />
     <Compile Include="Entity\Models\Admin.cs" />
     <Compile Include="Entity\Models\Esbul.cs" />
@@ -1108,6 +1107,8 @@
     <Content Include="Views\Esbul\Index.cshtml" />
     <Content Include="Views\Esbul\Create.cshtml" />
     <Content Include="Views\Ilan\Details.cshtml" />
+    <Content Include="Views\Esbul\Details.cshtml" />
+    <Content Include="Views\Account\Profil.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1118,6 +1119,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\AdminLayout\assets\jquery-file-upload\server\php\files\thumbnail\" />
+    <Folder Include="Data\" />
     <Folder Include="Uploads\Esbul\" />
     <Folder Include="Uploads\Ilanlar\" />
   </ItemGroup>
