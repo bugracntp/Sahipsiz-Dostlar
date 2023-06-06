@@ -5,22 +5,46 @@
 <section class="ilanver" id="home">
     <div class="container">
         <div class="contact-box">
-            <div class="left"><img class="left-img" src="~/Content/images/about-banner-1.jpg" alt="Alternate Text" /></div>
+            <div class="left"><img class="left-img" src="~/Content/images/about-banner-1.jpg" alt="Alternate Text" id="uploaded-img" /></div>
             <div class="right">
                 <h2 class="ilanver-title">İlan Ver</h2>
-                <form action="/Icerikler/Create" method="post" enctype="multipart/form-data">
+                <form action="/Ilan/Create" method="post" enctype="multipart/form-data">
                     <input name="Isim" type="text" class="field" placeholder="Adı" required>
+                    @Html.DropDownList("KategoriID", ViewBag.KategoriList as SelectList, "-- Select --", new { @class = "field", @name = "KategoriID" })
                     <input name="Tur" type="text" class="field" placeholder="Tür" required>
-                    <input name="CinsID" type="text" class="field" placeholder="Cinsi" required>
                     <input name="Yas" type="text" class="field" placeholder="Yaş" required>
-                    <input name="Cinsiyet" type="text" class="field" placeholder="Cinsiyeti" required>
+                    <select name="Cinsiyet" class="field" required>
+                        <option value="Erkek">Erkek</option>
+                        <option value="Dişi">Dişi</option>
+                    </select>
                     <input name="Renk" type="text" class="field" placeholder="Renk" required>
-                    <input name="SahiplendirmeDurumu" type="text" class="field" placeholder="Durum" required>
-                    <input name="ImgURL" type="file" class="field" placeholder="resim" accept=".jpg,.png,.jpeg">
+                    <input name="ImgURL" type="file" class="field" placeholder="resim" accept=".jpg,.png,.jpeg" id="uploader">
+                    @Html.DropDownList("SehirID", ViewBag.SehirlerList as SelectList, "-- Select --", new { @class = "field", @name = "SehirID" })
                     <textarea name="Açıklama" type="text" class="field" placeholder="Açıklama" required></textarea>
-                    <button class="btn" type="submit">İlan Ver</button>
+                    @if (Session["KullaniciID"] == null)
+                    {
+                        <p class="ilan-title-u">Önce giriş yapmalınız</p>
+                    }
+                    else
+                    {
+                        <button class="btn" type="submit">İlan Ver</button>}
                 </form>
             </div>
         </div>
     </div>
 </section>
+
+<script>
+    let picture = document.querySelector("#uploaded-img");
+    let uploader = document.querySelector("#uploader");
+    uploader.addEventListener("change", function () {
+        let file = this.files[0];
+        if (file) {
+            let reader = new FileReader();
+            reader.addEventListener("load", function () {
+                picture.setAttribute("src", this.result);
+            });
+            reader.readAsDataURL(file);
+        }
+    });
+</script>

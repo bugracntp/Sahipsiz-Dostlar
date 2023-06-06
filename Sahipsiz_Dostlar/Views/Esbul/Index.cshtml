@@ -42,15 +42,15 @@
                     <li>
                         <div class="post-card">
                             <figure class="card-banner">
-                                <img src="/Content/images/donate-1.jpg" width="420" height="325" loading="lazy"
+                                <img src="@item.ImgURL" width="420" height="325" loading="lazy"
                                      alt="Elephant" class="img-cover">
                             </figure>
                             <div class="card-content">
                                 <h3 class="h3 card-title">@item.Isim</h3>
-                                <button class="btn btn-secondary">
+                                <a href="/Esbul/Details/@item.HayvanId" class="btn btn-secondary">
                                     <span>İlanı Göster</span>
                                     <ion-icon name="heart-outline" aria-hidden="true"></ion-icon>
-                                </button>
+                                </a>
                             </div>
                         </div>
                     </li>

@@ -50,6 +50,10 @@ namespace Sahipsiz_Dostlar.Controllers
         [HttpGet]
         public ActionResult Create()
         {
+            Session["KullaniciID"] = 1;
+            Sahipsiz_DostlarDB db = new Sahipsiz_DostlarDB();
+            ViewBag.KategoriList = new SelectList(db.Kategori, "KategoriID", "KategoriAdi");
+            ViewBag.SehirlerList = new SelectList(db.Sehirler, "SehirID", "SehirAdi");
             return View();
         }
 

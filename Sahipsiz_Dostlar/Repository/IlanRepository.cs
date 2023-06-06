@@ -39,9 +39,9 @@ namespace Sahipsizler_Dostlar.Repository
 
                     string logoname = Guid.NewGuid().ToString() + imginfo.Extension;
                     img.Resize(500, 500);
-                    img.Save("~/Uploads/Hizmet/" + logoname);
+                    img.Save("~/Uploads/Ilanlar/" + logoname);
 
-                    entity.ImgURL = "/Uploads/Hizmet/" + logoname;
+                    entity.ImgURL = "/Uploads/Ilanlar/" + logoname;
                 }
                 db.Ilanlar.Add(entity);
                 db.SaveChanges();

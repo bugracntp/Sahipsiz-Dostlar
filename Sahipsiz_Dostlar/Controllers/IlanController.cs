@@ -52,6 +52,9 @@ namespace Sahipsiz_Dostlar.Controllers
         [HttpGet]
         public ActionResult Create()
         {
+            Sahipsiz_DostlarDB db = new Sahipsiz_DostlarDB();
+            ViewBag.KategoriList = new SelectList(db.Kategori, "KategoriID", "KategoriAdi");
+            ViewBag.SehirlerList = new SelectList(db.Sehirler, "SehirID", "SehirAdi");
             return View();
         }
 
