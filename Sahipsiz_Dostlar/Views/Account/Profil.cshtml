@@ -1,0 +1,66 @@
+﻿@model Sahipsiz_Dostlar.Models.ViewModel
+
+@{
+    ViewBag.Title = "Profil";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="anasayfa" id="home">
+    <div class="container">
+        <p class="section-subtitle">
+            <img src="./assets/images/subtitle-img-white.png" alt="">
+            <span>Buğra Çantepe</span>
+        </p>
+
+    </div>
+</section>
+<section class="section-post" id="ilanlar">
+    <div class="container">
+            <div class="section-heading">
+                <h2>Sahiplendirme İlanlarınız</h2>
+            </div>
+            <ul class="posts-list">
+                @foreach (var item in Model.Ilanlar)
+                {
+                    <li>
+                        <div class="post-card">
+                            <figure class="card-banner">
+                                <img src="/Content/images/donate-1.jpg" width="420" height="325" loading="lazy"
+                                     alt="Elephant" class="img-cover">
+                            </figure>
+                            <div class="card-content">
+                                <h3 class="h3 card-title">@item.Isim</h3>
+                                <a href="/Ilan/Details/@item.HayvanId" class="btn btn-primary">
+                                    <span>Hakkımızda</span>
+                                    <ion-icon name="chevron-forward-outline" aria-hidden="true"></ion-icon>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                }
+            </ul>
+            <div class="section-heading">
+                <h2>Eş Bulma İlanlarınız</h2>
+            </div>
+            <ul class="posts-list col-12">
+                @foreach (var item in Model.Esbul)
+                {
+                    <li>
+                        <div class="post-card">
+                            <figure class="card-banner">
+                                <img src="/Content/images/donate-1.jpg" width="420" height="325" loading="lazy"
+                                     alt="Elephant" class="img-cover">
+                            </figure>
+                            <div class="card-content">
+                                <h3 class="h3 card-title">@item.Isim</h3>
+                                <a href="/Ilan/Details/@item.HayvanId" class="btn btn-primary">
+                                    <span>Hakkımızda</span>
+                                    <ion-icon name="chevron-forward-outline" aria-hidden="true"></ion-icon>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                }
+            </ul>
+    </div>
+</section>

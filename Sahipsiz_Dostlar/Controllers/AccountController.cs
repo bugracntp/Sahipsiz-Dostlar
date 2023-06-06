@@ -66,7 +66,7 @@ namespace Sahipsiz_Dostlar.Controllers
             {
 
                 #region //Email is already Exist 
-                var isExist = KR.IsEmailExist(user.Email);
+                var isExist = KUR.IsEmailExist(user.Email);
                 if (isExist)
                 {
                     ModelState.AddModelError("EmailExist", "Email already exist");
@@ -144,6 +144,7 @@ namespace Sahipsiz_Dostlar.Controllers
 
         public ActionResult Profil()
         {
+            Session["KullaniciID"] = 1;
             if (Session["KullaniciID"] != null)
             {
                 int id = Convert.ToInt32(Session["KullaniciID"]);

@@ -16,19 +16,19 @@
                     <h2 class="ilan-title">Kategorisi  : @ViewBag.Kategori</h2>
                     <h2 class="ilan-title">Türü        : @Model.Tur</h2>
                     <h2 class="ilan-title">İlan Sahibi : @ViewBag.Kullanici</h2>
+                    <h2 class="ilan-title">İlan Sahibi : @ViewBag.Iletisim</h2>
                     <h2 class="ilan-title">
-                        İlan Durumu : 
-                        @if (Model.SahiplendirmeDurumu == false)
-                        {<p>Sahiplendirilmedi</p>}
-                        else
-                        { <p>Sahiplendirildi</p>}
-                        </h2>
-                        <h2 class="ilan-title">İlanın Yeri : @ViewBag.Sehir</h2>
-                    </div>
+                        İlan Durumu : @(Model.SahiplendirmeDurumu == true ? "Sahiplendirildi" : "Sahiplendirilmedi")
+
+                    </h2>
+                    <h2 class="ilan-title">İlanın Yeri : @ViewBag.Sehir</h2>
+                    <p class="ilan-title-u">Para Talebinde bulununulursa Bizimle İletişime Geçin.</p>
                 </div>
-                <div class="ads-content col-lg-3">
-                    REKLAM ALANI
-                </div>
+
+            </div>
+            <div class="ads-content col-lg-3">
+                REKLAM ALANI
             </div>
         </div>
-    </section>
+    </div>
+</section>

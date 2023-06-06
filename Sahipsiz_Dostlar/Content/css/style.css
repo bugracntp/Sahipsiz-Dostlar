@@ -413,6 +413,16 @@ body {
     }
 
 
+
+/*----------- ADS ---------------*/
+.ads-content {
+    width: 200px;
+    margin-left: 30px;
+    display: block;
+    background-color: var(--white-60);
+    text-align: center;
+    color: var(--eerie-black-1);
+}
 /*----------- Hero ---------------*/
 
 .anasayfa {
@@ -730,6 +740,17 @@ body {
 
 /*------------ Post ----------------*/
 
+.container > .section-heading {
+    margin-top: 20px;
+    margin-bottom: 100px;
+    text-align: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.19);
+    padding: 20px;
+    font-size: var(--fs-4);
+}
+.section-post .posts-list{
+    margin-left:150px;
+}
 .posts-list {
     display: grid;
     gap: 30px;
@@ -901,7 +922,15 @@ body {
     margin-left: 30px;
     color: var(--eerie-black-1);
 }
-
+.ilan-title {
+    border-bottom: 0.5px dotted rgba(0, 0, 0, 0.19);
+    font-size:var(--fs-7)
+}
+.ilan-title-u {
+    font-size: var(--fs-9);
+    font-weight: var(--fw5600);
+    color: red;
+}
 .left {
     background-size: cover;
     height: 100%;
@@ -944,12 +973,11 @@ body {
 
 .field {
     width: 100%;
-    border: 2px solid rgba(0, 0, 0, 0);
     outline: none;
     background-color: rgba(230, 230, 230, 0.6);
     padding: 0.5rem 1rem;
     font-size: 1.1rem;
-    margin-bottom: 22px;
+    margin-bottom: 10px;
     transition: .3s;
 }
 
@@ -958,7 +986,7 @@ body {
     }
 
 textarea {
-    min-height: 150px;
+    min-height: 125px;
 }
 
 .field:focus {

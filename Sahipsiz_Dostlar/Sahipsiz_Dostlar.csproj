@@ -1109,6 +1109,8 @@
     <Content Include="Views\Ilan\Details.cshtml" />
     <Content Include="Views\Esbul\Details.cshtml" />
     <Content Include="Views\Account\Profil.cshtml" />
+    <Content Include="Views\Admin\Adminlogin.cshtml" />
+    <Content Include="Views\Admin\AdminAdd.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

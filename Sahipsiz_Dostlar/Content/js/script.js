@@ -30,6 +30,8 @@ navbarLinks.forEach(link => {
  */
 
 const header = document.querySelector('[data-header]');
+const dataNavLinks = document.querySelectorAll('[data-nav-link]');
 window.addEventListener('scroll', () => {
     window.scrollY >= 50 ? header.classList.add('active') : header.classList.remove('active');
+    window.scrollY >= 50 ? dataNavLinks.classList.add('active') : dataNavLinks.classList.remove('active');
 });

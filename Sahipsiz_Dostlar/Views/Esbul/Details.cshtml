@@ -3,7 +3,6 @@
     ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
 <section class="ilanver" id="home">
     <div class="container">
         <div class="row">
@@ -16,12 +15,10 @@
                     <h2 class="ilan-title">Kategorisi  : @ViewBag.Kategori</h2>
                     <h2 class="ilan-title">Türü        : @Model.Tur</h2>
                     <h2 class="ilan-title">İlan Sahibi : @ViewBag.Kullanici</h2>
+                    <h2 class="ilan-title">İlan Sahibi : @ViewBag.Iletisim</h2>
                     <h2 class="ilan-title">
-                        İlan Durumu :
-                        @if (Model.SahiplendirmeDurumu == false)
-                        {<p>Sahiplendirilmedi</p>}
-                        else
-                        { <p>Sahiplendirildi</p>}
+                        İlan Durumu : @(Model.SahiplendirmeDurumu == true ? "Sahiplendirildi" : "Sahiplendirilmedi")
+
                     </h2>
                     <h2 class="ilan-title">İlanın Yeri : @ViewBag.Sehir</h2>
                 </div>

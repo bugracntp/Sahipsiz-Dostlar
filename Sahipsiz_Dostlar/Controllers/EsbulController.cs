@@ -35,6 +35,7 @@ namespace Sahipsiz_Dostlar.Controllers
             Esbul esbul = ER.GetById(id);
             ViewBag.Kategori = KR.GetById(esbul.KategoriID).KategoriAdi;
             ViewBag.Kullanici = KUR.GetById(esbul.KullaniciId).Ad + " " + KUR.GetById(esbul.KullaniciId).Soyad;
+            ViewBag.Iletisim = KUR.GetById(esbul.KullaniciId).Tel;
             using (var db = new Sahipsiz_DostlarDB())
             {
                 ViewBag.Sehir = db.Sehirler.Where(x => x.SehirID == esbul.SehirID).FirstOrDefault().SehirAdi;
@@ -57,7 +58,7 @@ namespace Sahipsiz_Dostlar.Controllers
         [HttpPost]
         public ActionResult Create(Esbul ilan, HttpPostedFileBase ImgURL)
         {
-            Console.WriteLine(ilan);
+            ilan.KullaniciId = Convert.ToInt32(Session["KullaniciID"]);
             if (ModelState.IsValid)
             {
                 ER.Add(ilan, ImgURL);

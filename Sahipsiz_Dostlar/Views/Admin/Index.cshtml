@@ -1,4 +1,5 @@
-﻿
+﻿@model IEnumerable<Sahipsiz_Dostlar.Entity.Models.Admin>
+
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -6,3 +7,40 @@
 
 <h2>Index</h2>
 
+<p>
+    <a class="btn btn-default" href="/Admin/AdminAdd">Yeni Admin</a>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.AdminID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Eposta)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sifre)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.AdminID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Eposta)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sifre)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.AdminID }) |
+            @Html.ActionLink("Details", "Details", new { id = item.AdminID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.AdminID })
+        </td>
+    </tr>
+}
+
+</table>
