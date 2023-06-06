@@ -1457,7 +1457,7 @@ textarea {
     */
 
     .anasayfa {
-        background-image: url("../images/hero.jpg");
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("../images/anasayfa.jpg");
         background-repeat: no-repeat;
         background-size: cover;
         background-position: left;
