@@ -18,11 +18,11 @@ namespace Sahipsiz_Dostlar.Controllers
         private readonly KategoriRepository KR = new KategoriRepository();
         private readonly KullaniciRepository KUR = new KullaniciRepository();
         // GET: Esbul
-        public ActionResult Index()
+        public ActionResult Index(int? id)
         {
             ViewModel vm = new ViewModel();
+            vm.Esbul = id != null ? ER.GetAll().Where(x => x.KategoriID == id).ToList() : ER.GetAll();
             vm.Kategori = KR.GetAll();
-            vm.Esbul = ER.GetAll();
             return View(vm);
         }
 

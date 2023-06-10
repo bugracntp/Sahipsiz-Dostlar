@@ -18,13 +18,15 @@ namespace Sahipsiz_Dostlar.Controllers
         private readonly KullaniciRepository KUR = new KullaniciRepository();
 
         // GET: Ilan
-        public ActionResult Index()
+        public ActionResult Index(int? id)
         {
             ViewModel vm = new ViewModel();
-            vm.Ilanlar = IR.GetAll();
+            
+            vm.Ilanlar = id != null ? IR.GetAll().Where(x => x.KategoriID == id).ToList() : IR.GetAll();
             vm.Kategori = KR.GetAll();
             return View(vm);
         }
+
 
         public ActionResult Details(int? id)
         {

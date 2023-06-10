@@ -9,12 +9,15 @@
 <section class="ilanlar" id="home">
     <div class="container">
         <h2 class="h1 ilanlar-title">
-            <strong>İlan Listesi</strong>
+            <strong>Eş Bulma Ekranı</strong>
         </h2>
         <p class="ilanlar-text">
-            Evlerimizde beslediğimiz küçük dostlarımzı satmak yerine sahiplendirmek istiyoruz. Bu yüzden böyle bir platform oluşturduk.
-            Bizlere destek olmak ve hayvan dostlarımıza sahip çıkmak için lütfen satın almak yerine sahiplendirme yapınız. Bunun için bize katılabilirsiniz.
+            Küçük dostrlarımızın yanlız olmamaları için, Kendi cinslerinden olan arkadaşlarını bu sayfadan onlar için eş arayarak bulabilirsiniz.
         </p>
+        <a href="/Esbul/Create" class="btn btn-primary">
+            <span>Eş ara</span>
+        </a>
+        <br />
     </div>
 </section>
 <!-- Posts -->
@@ -22,12 +25,12 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-3 categories">
-                <h3 class="widget-title">Categories</h3>
+                <h3 class="widget-title">Kategori</h3>
                 <ul>
                     @foreach (var item in Model.Kategori)
                     {
                         <li>
-                            <a href="#" class="categori-link" data-nav-link>
+                            <a href="/Esbul/Index/@item.KategoriID" class="categori-link" data-nav-link>
                                 <span>@item.KategoriAdi</span>
                                 <ion-icon name="chevron-forward-outline" aria-hidden="true"></ion-icon>
                             </a>

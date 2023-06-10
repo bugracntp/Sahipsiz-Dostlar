@@ -9,12 +9,17 @@
 <section class="ilanlar" id="home">
     <div class="container">
         <h2 class="h1 ilanlar-title">
-            <strong>İlan Listesi</strong>
+            <strong>Sahiplendirme Ekranı</strong>
         </h2>
         <p class="ilanlar-text">
             Evlerimizde beslediğimiz küçük dostlarımzı satmak yerine sahiplendirmek istiyoruz. Bu yüzden böyle bir platform oluşturduk.
-            Bizlere destek olmak ve hayvan dostlarımıza sahip çıkmak için lütfen satın almak yerine sahiplendirme yapınız. Bunun için bize katılabilirsiniz.
+            Bizlere destek olmak ve hayvan dostlarımıza sahip çıkmak için lütfen satın almak yerine sahiplendirme yapınız.
         </p>
+
+        <a href="/Ilan/Create" class="btn btn-primary">
+            <span>Sahiplendir</span>
+        </a>
+        <br />
     </div>
 </section>
 <!-- Posts -->
@@ -22,12 +27,12 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-3 categories">
-                <h3 class="widget-title">Categories</h3>
+                <h3 class="widget-title">Kategoriler</h3>
                 <ul>
                     @foreach (var item in Model.Kategori)
                     {
                         <li>
-                            <a href="#" class="categori-link" data-nav-link>
+                            <a href="/Ilan/Index/@item.KategoriID" class="categori-link" data-nav-link>
                                 <span>@item.KategoriAdi</span>
                                 <ion-icon name="chevron-forward-outline" aria-hidden="true"></ion-icon>
                             </a>

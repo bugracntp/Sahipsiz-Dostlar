@@ -16,14 +16,21 @@
             {
                 <p>@ViewBag.Giris</p>
             }
-            <p class="anasayfa-text">
-                Evlerimizde beslediğimiz küçük dostlarımzı satmak yerine sahiplendirmek istiyoruz. Bu yüzden böyle bir platform oluşturduk.
-                Bizlere destek olmak ve hayvan dostlarımıza sahip çıkmak için lütfen satın almak yerine sahiplendirme yapınız. Bunun için bize katılabilirsiniz.
-            </p>
+        <p class="anasayfa-text">
+            Gün batarken solgun bir gökyüzünde, yüreklerimizin derinliklerinde kalan bir arzu yeşerir.
+            Duygularımızın sesini duyup kulak veririz, çünkü biz hayvanseverleriz. Ve o arzu, sahipsiz
+            hayvanların umuduyla birleşir, hayata yeni bir soluk getirir. Bu web sitesi, kaybolan hayatlara 
+            umut olmak için yaratıldı. Saf sevginin sıcaklığını yüreğinde taşıyan herkesi, burada buluşmaya 
+            davet ediyoruz. Sayfalarında hayat bulan dostlarımız, birbirinden renkli hikayeleriyle kalplerimize 
+            dokunacak. İlgilerinizi çeken, ruhunuzla uyum sağlayan bir dostu arıyorsanız, burası sizin yeriniz.
+        </p>
             <br />
-            <button class="btn btn-primary">
-                <span>Kayıt Ol</span>
-            </button>
+            @if (Session["KullaniciID"] == null)
+            {
+                <button class="btn btn-primary">
+                    <span>Kayıt Ol</span>
+                </button>
+            }
         </div>
     </section>
 
@@ -112,9 +119,15 @@
                 <br />
                 <div class="tab-content" data-text-mission>
                     <p class="section-text">
-                        Günümüzde ülkemizde de yaygınlaşan hayvan besleme alışkanlığı ile birçok sahipsiz hayvana bir yuva bulabiliriz. 
-                        Pet shoplarda gerçekleştirilen hayvan ticaretlerinin etik olmamasından kaynaklı olarak küçük dostlarımızı birer
-                        eşya gibi alıp satarak ticaret yapmak yerine olara sıcak birer yuva bulmak çok daha iyi. 
+                        Adımlarınızı attığınız anda, kapılarımız size açılır. Bir masal gibi başlar bu 
+                        yolculuk. Profil sayfalarında, göz alıcı resimleriyle birlikte hayvanlarımızın 
+                        hikayelerini bulacaksınız. Öksüz sokaklarda büyümüş, sevgiye aç susuz yavruların 
+                        bakışlarından akan acıyı hissedeceksiniz. Onların yanında yer almak için tek bir 
+                        adım atmanız yeterli.
+                        Gönlünüzde bir boşluk varsa ve hayatınıza anlam katmak istiyorsanız, bu web sitesi 
+                        sizin mucize arayışınızın kapısıdır. Saflığına dokunacağınız, dostluğun ta kendisi
+                        olan bu dostlarımıza umut olun.
+
                     </p>
                     <ul class="tab-list">
                         <li class="tab-item">
@@ -131,7 +144,7 @@
     </section>
 
     <!-- CTA -->
-    <section class="section cta">
+    <!--<section class="section cta">
         <div class="container">
             <div class="cta-content">
                 <h2 class="h2 section-title">324+ Trusted Global Partners</h2>
@@ -145,10 +158,10 @@
                      class="img-cover">
             </figure>
         </div>
-    </section>
+    </section>-->
 
     <!-- services -->
-    <section class="section service" id="service"
+    <!--<section class="section service" id="service"
              style="background-image: url('./Content/images/service-map.png')">
         <div class="container">
 
@@ -250,7 +263,7 @@
                 </li>
             </ul>
         </div>
-    </section>
+    </section>-->
 
     <!-- TESTIMONIALS -->
 
@@ -271,11 +284,23 @@
             <div class="testi-card">
                 <div>
                     <blockquote class="testi-text">
-                        Sed ut perspiciatis unde omnis iste natus error voluptatem accusantium doloremque
-                        laudantium totam rem
-                        aperiam eaquesa
-                        quae abillo inventore veritatis quasi architecto beatae vitae dicta sunt explicabo
-                        enimpsam voluptatem
+                        Gönlünüzde bir boşluk varsa ve hayatınıza anlam katmak istiyorsanız, 
+                        bu web sitesi sizin mucize arayışınızın kapısıdır. Saflığına dokuna-
+                        cağınız, dostluğun ta kendisi olan bu dostlarımıza umut olun.
+                        Dostlarımızın izinde ilerlerken, sevgiyle dokunan ellerinizle hayatları 
+                        değiştirin. Başvurularınızı bırakın, yüreğinizin kapılarını aralayın. 
+                        Seçtiğiniz dostumuzla buluşmak için adımlarınızı heyecanla bekleyeceğiz. 
+                        Unutmayın, bu web sitesi sadece bir buluşma noktası değil, kalplerin 
+                        kesiştiği bir hikayedir.
+                        Böylece, sahipsiz hayvanların masalsı dünyasında birer dost olduk. 
+                        Yeryüzündeki umutlarınıza umut katarak, onlara yeniden hayatın güzellik-
+                        lerini yaşatırız. Bu web sitesi, sahipsiz dostlarımızın adını taşıyan 
+                        bir anıttır. Sevgiyle, fedakarlıkla ve hayvanseverlikle inşa edilmiştir.
+                        Sahipsiz Dostlar, her bir adımınızla bir hayatı değiştireceğiniz bir 
+                        web sitesidir. Siz de bu destana katılmak ve sevgi dolu yuvaların 
+                        inşasına destek olmak için bugün bize katılın. Çünkü gerçek dostlar, 
+                        sahipsiz hayvanları satın almayan, onları sahiplenenlerdir
+
                     </blockquote>
 
                     <h3 class="testi-name">David S. Neuman</h3>

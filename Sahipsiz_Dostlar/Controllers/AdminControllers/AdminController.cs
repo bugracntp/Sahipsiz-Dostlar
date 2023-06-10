@@ -16,6 +16,10 @@ namespace Sahipsiz_Dostlar.Controllers
         {
             using (Sahipsiz_DostlarDB DB = new Sahipsiz_DostlarDB())
             {
+                if (Session["AdminID"] == null)
+                {
+                    return RedirectToAction("Adminlogin", "Admin");
+                }
                 return View(DB.Admin.ToList()) ;
             }
         }
